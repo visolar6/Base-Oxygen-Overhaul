@@ -1,0 +1,289 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <RootNamespace>BaseOxygenOverhaul.Tests</RootNamespace>
+    <AssemblyName>BaseOxygenOverhaul.Tests</AssemblyName>
+    <LangVersion>7.3</LangVersion>
+    <IsPackable>false</IsPackable>
+    <Nullable>disable</Nullable>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="4.0.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+    <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Assembly-CSharp.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Assembly-CSharp-firstpass.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UWE.EditorModifications.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.CoreModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.SharedInternalsModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.UI.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.UIModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.UIElementsModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.IMGUIModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.AudioModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.VideoModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.PhysicsModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.Physics2DModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.TerrainModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.TerrainPhysicsModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.ClothModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.VehiclesModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.AnimationModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.ParticleSystemModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.TextRenderingModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.TextCoreModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.SpriteMaskModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.SpriteShapeModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.TilemapModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.GridModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.VFXModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.InputModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.InputLegacyModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.AssetBundleModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.ImageConversionModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.UnityWebRequestModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.XRModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.VRModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.ARModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.SubsystemsModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.UNETModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.AIModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.AndroidJNIModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.GameCenterModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.AccessibilityModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.JSONSerializeModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.LocalizationModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.ProfilerModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.PerformanceReportingModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.ScreenCaptureModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.StreamingModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.TLSModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.DirectorModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.DSPGraphModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.ClusterInputModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.ClusterRendererModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.CrashReportingModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.HotReloadModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.SubstanceModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.UmbraModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.UnityAnalyticsModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.UnityConnectModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.UnityTestProtocolModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\UnityEngine.WindModule.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Unity.Addressables.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Unity.Burst.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Unity.Burst.Unsafe.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Unity.Collections.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Unity.Formats.Fbx.Runtime.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Unity.InputSystem.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Unity.Mathematics.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Unity.MemoryProfiler.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Unity.Recorder.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Unity.ResourceManager.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Unity.ScriptableBuildPipeline.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Unity.TextMeshPro.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Unity.Timeline.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Autodesk.Fbx.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\com.rlabrecque.steamworks.net.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\FMODUnity.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\LitJson.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\LumenWorks.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Newtonsoft.Json.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\Sentry.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(GameDir)\Subnautica_Data\Managed\SpriteAssetExtensions.Runtime.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(BepInExDir)\core\BepInEx.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(BepInExDir)\core\0Harmony.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(BepInExDir)\plugins\Nautilus\Nautilus.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BaseOxygenOverhaul\BaseOxygenOverhaul.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,72 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <RootNamespace>BaseOxygenOverhaul</RootNamespace>
+    <AssemblyName>BaseOxygenOverhaul</AssemblyName>
+    <LangVersion>7.3</LangVersion>
+    <OutputType>Library</OutputType>
+    <Nullable>disable</Nullable>
+    <Deterministic>true</Deterministic>
+    <!-- Set to Release by default for smaller DLL -->
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+  </PropertyGroup>
+
+  <!-- Debug Configuration -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SN1;SN;SUBNAUTICA</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <!-- Release Configuration -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;SN1;SN;SUBNAUTICA</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <!-- Content -->
+  <ItemGroup>
+    <Content Include="Localizations.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\\**\\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>Assets\%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </Content>
+  </ItemGroup>
+
+  <!-- Build Targets -->
+  <Target Name="CopyToTargetDir" AfterTargets="Build">
+    <Copy SourceFiles="$(TargetPath);../LICENSE" DestinationFolder="$(OutputPath)" />
+    <!-- <WriteLinesToFile File="$(OutputPath)load-order.txt" Overwrite="True" /> -->
+    <MakeDir Directories="$(OutputPath)plugins" />
+  </Target>
+
+  <!-- <Target Name="CopyToModsDir" AfterTargets="CopyToTargetDir" Condition="'$(Configuration)' == 'Debug' And Exists('game-dirs.txt')">
+    <ReadLinesFromFile File="game-dirs.txt">
+      <Output TaskParameter="Lines" ItemName="GameDirs" />
+    </ReadLinesFromFile>
+    <CreateItem Include="$(OutputPath)*">
+      <Output TaskParameter="Include" ItemName="TargetFiles" />
+    </CreateItem>
+    <CreateProperty Value="BepInEx/plugins/$(ProjectName)">
+      <Output TaskParameter="Value" PropertyName="PluginDir" />
+    </CreateProperty>
+    <Copy SourceFiles="@(TargetFiles)" DestinationFolder="%(GameDirs.Identity)/$(PluginDir)" />
+    <MakeDir Directories="%(GameDirs.Identity)/$(PluginDir)" />
+  </Target> -->
+
+  <Target Name="ZipDist" AfterTargets="CopyToTargetDir" Condition="'$(Configuration)' == 'Release'">
+    <CreateItem Include="$(OutputPath)**/*">
+      <Output TaskParameter="Include" ItemName="TargetFiles" />
+    </CreateItem>
+    <Copy SourceFiles="@(TargetFiles)" DestinationFolder="bin/built/$(ProjectName)" />
+    <MakeDir Directories="bin/built/$(ProjectName)/" />
+    <ZipDirectory SourceDirectory="bin/built" DestinationFile="bin/$(ProjectName).$(Configuration).zip" Overwrite="True" />
+  </Target>
+</Project>
