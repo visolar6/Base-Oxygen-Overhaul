@@ -2,9 +2,11 @@ using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
 using Nautilus.Handlers;
+using Nautilus.Utility;
+using System.Reflection;
+using UnityEngine;
 using BaseOxygenOverhaul.Utilities;
 using BaseOxygenOverhaul.Prefabs;
-using UWE;
 
 namespace BaseOxygenOverhaul
 {
@@ -14,6 +16,8 @@ namespace BaseOxygenOverhaul
         public static Options Options { get; } = OptionsPanelHandler.RegisterModOptions<Options>();
 
         public static ManualLogSource Log;
+
+        public static AssetBundle AssetBundle { get; } = AssetBundleLoadingUtils.LoadFromAssetsFolder(Assembly.GetExecutingAssembly(), "baseoxygenoverhaul");
 
         internal const string GUID = "com.visolar6.baseoxygenoverhaul";
 

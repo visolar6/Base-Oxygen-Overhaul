@@ -1,0 +1,33 @@
+ManifestFileVersion: 0
+CRC: 919092879
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d52f414d55eba738e2619114a29ec698
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 10a07c9e7cd244b31cd1aeeb69831bdc
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/BaseOxygenOverhaul/SmallOxygenGenerator.prefab
+Dependencies: []

@@ -6,15 +6,21 @@
         <Text key="EncyDesc_OxygenGeneration">Oxygen generation is essential for sustaining life in underwater habitats. Each base compartment consumes oxygen, and larger or more complex bases require greater oxygen production to remain habitable. Specialized oxygen generators convert water into breathable air, powered by the base's energy reserves. To ensure safe atmospheric conditions, install sufficient generators to match your base's size and monitor oxygen levels as you expand or modify your habitat.</Text>
 
         <!-- Buildables -->
-        <Text key="SmallOxygenGenerator">Small oxygen generator</Text>
-        <Text key="Tooltip_SmallOxygenGenerator">Supplies oxygen to small bases.</Text>
-        <Text key="LargeOxygenGenerator">Large oxygen generator</Text>
-        <Text key="Tooltip_LargeOxygenGenerator">Supplies oxygen to large bases.</Text>
-        <Text key="LargeOxygenGeneratorFragment">Large oxygen generator fragment</Text>
-        <Text key="Tooltip_LargeOxygenGeneratorFragment">A fragment of a large oxygen generator. Scan to learn more.</Text>
+        <Text key="SmallOxygenGenerator">Air synthesizer</Text>
+        <Text key="Tooltip_SmallOxygenGenerator">Supplies a small amount of oxygen.</Text>
+        <Text key="LargeOxygenGenerator">Atmospheric processing unit</Text>
+        <Text key="Tooltip_LargeOxygenGenerator">Supplies a large amount of oxygen.</Text>
+        <Text key="LargeOxygenGeneratorFragment">Atmospheric processing unit fragment</Text>
+        <Text key="Tooltip_LargeOxygenGeneratorFragment">A fragment of an atmospheric processing unit. Scan to learn more.</Text>
 
         <!-- UI -->
         <Text key="OxygenEfficiency">Oxygen efficiency</Text>
         <Text key="OxygenNoPower">No power</Text>
+
+        <!-- Options -->
+        <Text key="Option_ProductionRateSmallOxygenGenerator">Air synthesizer production rate</Text>
+        <Text key="OptionTooltip_ProductionRateSmallOxygenGenerator">Adjust the oxygen production rate for air synthesizers.</Text>
+        <Text key="Option_ProductionRateLargeOxygenGenerator">Atmospheric processing unit production rate</Text>
+        <Text key="OptionTooltip_ProductionRateLargeOxygenGenerator">Adjust the oxygen production rate for atmospheric processing units.</Text>
     </LocalizationPackage>
 </LocalizationPackages>

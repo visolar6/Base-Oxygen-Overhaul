@@ -8,31 +8,6 @@ namespace BaseOxygenOverhaul.Handlers
 {
     public static class BaseOxygen
     {
-        /// <summary>
-        /// Oxygen production rate for Small Oxygen Generator
-        /// </summary>
-        public const float ProductionRateSmallOxygenGenerator = 0.5f;
-        /// <summary>
-        /// Oxygen production rate for Large Oxygen Generator
-        /// </summary>
-        public const float ProductionRateLargeOxygenGenerator = 4.0f;
-
-        /// <summary>
-        /// Interval in seconds for caching the base's oxygen depletion rate, to avoid expensive calculations every frame.
-        /// The depletion rate is based on the base's cells and doesn't need to be updated every frame, so we can cache it and only recalculate at a set interval (e.g. every 15 seconds) or when the base reference changes.
-        /// </summary>
-        public const float DepletionRateCacheInterval = 15f;
-        /// <summary>
-        /// Interval in seconds for caching the base's oxygen production rate, to avoid expensive calculations every frame.
-        /// The production rate is based on the base's constructed oxygen generators and doesn't need to be updated every frame, so we can cache it and only recalculate at a set interval (e.g. every 5 seconds) or when the base reference changes.
-        /// </summary>
-        public const float ProductionRateCacheInterval = 5f;
-        /// <summary>
-        /// Interval in seconds for caching the base reference, to avoid expensive calculations every frame.
-        /// The base reference is used for oxygen calculations and doesn't need to be updated every frame, so we can cache it and only recalculate at a set interval (e.g. every 5 seconds).
-        /// </summary>
-        public const float BaseReferenceCacheInterval = 5f;
-
         public static readonly Dictionary<Base.CellType, float> HabitableCellDepletionRates = new Dictionary<Base.CellType, float>()
         {
             { Base.CellType.Connector, 0.1f },
@@ -92,8 +67,7 @@ namespace BaseOxygenOverhaul.Handlers
                     baseOxygenDepleteTimer += Time.deltaTime;
                     if (baseOxygenDepleteTimer >= 3f)
                     {
-                        Plugin.Log.LogInfo($"Depleting player oxygen by {BaseOxygenUtils.GetOxygenToRemove(baseOxygenNetProductionRate, oxygen.oxygenAvailable)} based on base net production rate of {baseOxygenNetProductionRate}");
-                        oxygen.oxygenAvailable -= BaseOxygenUtils.GetOxygenToRemove(baseOxygenNetProductionRate, oxygen.oxygenAvailable);
+                        oxygen.oxygenAvailable -= BaseOxygenUtils.GetOxygenToRemove(3f /*baseOxygenNetProductionRate*/, oxygen.oxygenAvailable);
                         baseOxygenDepleteTimer = 0f;
                     }
 
@@ -156,10 +130,10 @@ namespace BaseOxygenOverhaul.Handlers
                         switch (oxygenGeneratorManager.type)
                         {
                             case OxygenGeneratorSize.Small:
-                                rate += ProductionRateSmallOxygenGenerator;
+                                rate += Plugin.Options.ProductionRateSmallOxygenGenerator;
                                 break;
                             case OxygenGeneratorSize.Large:
-                                rate += ProductionRateLargeOxygenGenerator;
+                                rate += Plugin.Options.ProductionRateLargeOxygenGenerator;
                                 break;
                         }
                     }
