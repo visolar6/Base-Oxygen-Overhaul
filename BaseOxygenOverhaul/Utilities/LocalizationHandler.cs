@@ -78,7 +78,7 @@ namespace BaseOxygenOverhaul.Utilities
             }
         }
 
-        public static void GlobalPatch()
+        public static void Patch()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(LocalizationHandler.LocalizationPackages));
 

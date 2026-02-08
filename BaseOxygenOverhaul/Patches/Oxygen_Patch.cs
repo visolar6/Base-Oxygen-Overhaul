@@ -1,5 +1,5 @@
 using HarmonyLib;
-using BaseOxygenOverhaul.Handlers;
+using BaseOxygenOverhaul.Utilities;
 
 namespace BaseOxygenOverhaul.Patches
 {
@@ -13,7 +13,7 @@ namespace BaseOxygenOverhaul.Patches
         [HarmonyPatch(nameof(Oxygen.AddOxygen))]
         private static bool AddOxygen_Prefix(Oxygen __instance, float amount, ref float __result)
         {
-            if (!BaseOxygen.OnPlayerOxygenAdd(ref __instance))
+            if (!BaseOxygenHandler.OnPlayerOxygenAdd(ref __instance))
             {
                 __result = 0f;
                 return false; // Block oxygen addition

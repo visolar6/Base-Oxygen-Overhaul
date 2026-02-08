@@ -37,39 +37,19 @@ namespace BaseOxygenOverhaul
 
         public void Start()
         {
-            Log?.LogInfo("Patching databank");
-            PDAHandler.AddEncyclopediaEntry(
-                key: Global.Keys.OxygenGeneration,
-                path: "Tech/Habitats",
-                title: Global.Keys.EncyOxygenGeneration,
-                desc: Global.Keys.EncyDescOxygenGeneration,
-                image: null,
-                popupImage: null,
-                unlockSound: null,
-                voiceLog: null
-            );
-
-            Log?.LogInfo("Patching story goals");
-            StoryGoalHandler.RegisterCustomEvent(
-                key: Global.StoryGoals.EnterBaseOxygenOverhaulStoryGoal.key,
-                customEventCallback: () =>
-                {
-                    PDAEncyclopedia.AddAndPlaySound(Global.Keys.OxygenGeneration);
-                }
-            );
+            Log?.LogInfo("Patching localization");
+            LanguagesHandler.Patch();
 
             Log?.LogInfo("Patching hooks");
             _harmony.PatchAll();
 
-            Log?.LogInfo("Patching localization");
-            LanguagesHandler.GlobalPatch();
+            Log?.LogInfo("Patching global");
+            Global.Patch();
 
             Log?.LogInfo("Patching items");
             SmallOxygenGenerator.Register();
-            /* Not ready yet - need to design and implement large oxygen generator first
             LargeOxygenGenerator.Register();
             LargeOxygenGeneratorFragment.Register();
-            */
         }
     }
 }

@@ -17,23 +17,20 @@ namespace BaseOxygenOverhaul.Prefabs
         public static PrefabInfo Info { get; } = PrefabInfo
             .WithTechType(
                 classId: "SmallOxygenGenerator",
-                unlockAtStart: false,
+                unlockAtStart: true,
                 techTypeOwner: Assembly.GetExecutingAssembly()
             )
-            .WithIcon(ResourceHandler.LoadSpriteFromFile("Assets/Sprite/SmallOxygenGeneratorIcon.png"));
+            .WithIcon(Plugin.AssetBundle.LoadAsset<Sprite>("SmallOxygenGeneratorIcon"));
 
         public static void Register()
         {
             var prefab = new CustomPrefab(Info);
 
-            // prefab.SetGameObject(new CloneTemplate(Info, "5fc7744b-5a2c-4572-8e53-eebf990de434") // wall locker
-            // {
-            //     ModifyPrefab = ModifyPrefab
-            // });
-
             prefab.SetGameObject(CreatePrefab);
 
             prefab.SetUnlock(TechType.Titanium)
+                .WithCompoundTechsForUnlock(new List<TechType> { TechType.WiringKit, TechType.FiberMesh })
+                .WithAnalysisTech(null, null, null)
                 .WithPdaGroupCategoryAfter(
                     TechGroup.InteriorModules,
                     TechCategory.InteriorModule,
@@ -56,14 +53,19 @@ namespace BaseOxygenOverhaul.Prefabs
 
         private static IEnumerator CreatePrefab(IOut<GameObject> result)
         {
+            Plugin.AssetBundle.GetAllAssetNames().ForEach(assetName => Plugin.Log?.LogWarning($"Asset: {assetName}"));
+
+            Plugin.Log?.LogInfo("Creating prefab for Small Oxygen Generator");
             var prefab = Plugin.AssetBundle.LoadAsset<GameObject>("SmallOxygenGenerator");
 
             PrefabUtils.AddBasicComponents(prefab, Info.ClassID, Info.TechType, LargeWorldEntity.CellLevel.Global);
 
             MaterialUtils.ApplySNShaders(prefab, 4);
 
+            Plugin.Log?.LogInfo("Getting game object");
             var model = prefab.transform.Find("default").gameObject;
 
+            Plugin.Log?.LogInfo("Adding constructable");
             var constructable = PrefabUtils.AddConstructable(prefab, Info.TechType, ConstructableFlags.Base | ConstructableFlags.Inside | ConstructableFlags.Wall, model);
             constructable.rotationEnabled = false;
             constructable.placeDefaultDistance = 5f;
@@ -76,21 +78,9 @@ namespace BaseOxygenOverhaul.Prefabs
             var manager = prefab.EnsureComponent<OxygenGeneratorManager>();
             manager.type = OxygenGeneratorSize.Small;
 
+            Plugin.Log?.LogInfo("Prefab created");
             result.Set(prefab);
             yield break;
-        }
-
-        private static void ModifyPrefab(GameObject wallLocker)
-        {
-            // Remove all unnecessary components
-            PrefabCleaner.CleanWallLocker(wallLocker);
-
-            // Add manager component
-            var manager = wallLocker.EnsureComponent<OxygenGeneratorManager>();
-            manager.type = OxygenGeneratorSize.Small;
-
-            // Add audio-visual component
-            wallLocker.EnsureComponent<OxygenGeneratorAudioVisualSmall>();
         }
     }
 }

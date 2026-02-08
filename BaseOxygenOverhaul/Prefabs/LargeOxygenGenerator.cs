@@ -19,7 +19,7 @@ namespace BaseOxygenOverhaul.Prefabs
                 unlockAtStart: false,
                 techTypeOwner: Assembly.GetExecutingAssembly()
             )
-            .WithIcon(ResourceHandler.LoadSpriteFromFile("Assets/Sprite/OxygenGeneratorIcon.png"));
+            .WithIcon(Plugin.AssetBundle.LoadAsset<Sprite>("LargeOxygenGeneratorIcon"));
 
         public static void Register()
         {
@@ -35,7 +35,19 @@ namespace BaseOxygenOverhaul.Prefabs
             prefab
                 .SetUnlock(TechType.PlasteelIngot)
                 .WithCompoundTechsForUnlock(new List<TechType> { TechType.AdvancedWiringKit, TechType.Aerogel, TechType.Lubricant, TechType.FiberMesh })
-                .WithPdaGroupCategoryAfter(TechGroup.InteriorPieces, TechCategory.InteriorPiece, TechType.Bioreactor);
+                .WithAnalysisTech(null, null, null)
+                .WithPdaGroupCategoryAfter(
+                    TechGroup.InteriorPieces,
+                    TechCategory.InteriorPiece,
+                    TechType.Bioreactor
+                )
+                .WithScannerEntry(
+                    blueprint: Info.TechType,
+                    scanTime: 5f,
+                    isFragment: false,
+                    encyKey: Global.GetEncyclopediaKey(Global.EncyclopediaKeys.LargeOxygenGenerator),
+                    destroyAfterScan: false
+                );
 
             // Set crafting recipe and other properties
             prefab.SetRecipe(new RecipeData()
@@ -52,7 +64,12 @@ namespace BaseOxygenOverhaul.Prefabs
 
             prefab.Register();
 
-            KnownTechHandler.SetAnalysisTechEntry(Info.TechType, new List<TechType>(), KnownTechHandler.DefaultUnlockData.BlueprintUnlockMessage, ResourceHandler.LoadSpriteFromFile("Assets/Sprite/OxygenGeneratorPopup.png"));
+            KnownTechHandler.SetAnalysisTechEntry(
+                techTypeToBeAnalysed: Info.TechType,
+                techTypesToUnlock: new List<TechType>(),
+                unlockMessage: KnownTechHandler.DefaultUnlockData.BlueprintUnlockMessage,
+                unlockSprite: Plugin.AssetBundle.LoadAsset<Sprite>("LargeOxygenGeneratorPopup")
+            );
         }
 
         private static IEnumerator ModifyPrefab(GameObject prefab)
