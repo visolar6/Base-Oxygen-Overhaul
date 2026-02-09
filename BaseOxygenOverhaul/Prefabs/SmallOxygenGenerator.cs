@@ -53,32 +53,28 @@ namespace BaseOxygenOverhaul.Prefabs
 
         private static IEnumerator CreatePrefab(IOut<GameObject> result)
         {
-            Plugin.AssetBundle.GetAllAssetNames().ForEach(assetName => Plugin.Log?.LogWarning($"Asset: {assetName}"));
-
-            Plugin.Log?.LogInfo("Creating prefab for Small Oxygen Generator");
+            // Load base prefab
             var prefab = Plugin.AssetBundle.LoadAsset<GameObject>("SmallOxygenGenerator");
-
             PrefabUtils.AddBasicComponents(prefab, Info.ClassID, Info.TechType, LargeWorldEntity.CellLevel.Global);
+            MaterialUtils.ApplySNShaders(prefab, 6);
 
-            MaterialUtils.ApplySNShaders(prefab, 4);
-
-            Plugin.Log?.LogInfo("Getting game object");
+            // Allow construction
             var model = prefab.transform.Find("default").gameObject;
-
-            Plugin.Log?.LogInfo("Adding constructable");
             var constructable = PrefabUtils.AddConstructable(prefab, Info.TechType, ConstructableFlags.Base | ConstructableFlags.Inside | ConstructableFlags.Wall, model);
             constructable.rotationEnabled = false;
             constructable.placeDefaultDistance = 5f;
             constructable.placeMinDistance = 1f;
             constructable.placeMaxDistance = 10f;
+            var constructableBounds = prefab.AddComponent<ConstructableBounds>();
+            var boxCollider = model.GetComponent<BoxCollider>();
+            constructableBounds.bounds = new OrientedBounds(boxCollider.bounds.center, Quaternion.identity, boxCollider.bounds.size);
 
-            var bounds = prefab.AddComponent<ConstructableBounds>();
-            bounds.bounds = new OrientedBounds(Vector3.up * 0.5f, Quaternion.identity, new Vector3(0.8f, 1f, 0.8f));
-
+            // Add behaviours
             var manager = prefab.EnsureComponent<OxygenGeneratorManager>();
             manager.type = OxygenGeneratorSize.Small;
+            prefab.EnsureComponent<OxygenGeneratorAudioVisualSmall>();
+            prefab.EnsureComponent<OxygenHandTarget>();
 
-            Plugin.Log?.LogInfo("Prefab created");
             result.Set(prefab);
             yield break;
         }

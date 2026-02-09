@@ -7,9 +7,11 @@ namespace BaseOxygenOverhaul.Mono.OxygenGenerator
     /// </summary>
     public abstract class OxygenGeneratorAudioVisual : MonoBehaviour
     {
-        protected virtual void Start()
-        {
-            Plugin.Log.LogInfo($"Starting {GetType().Name} on {gameObject.name}");
-        }
+        private const float UpdateInterval = 0.5f;
+        private float updateTimer = 0f;
+
+        protected virtual void Start() { }
+
+        protected virtual void Update() { }
     }
 }

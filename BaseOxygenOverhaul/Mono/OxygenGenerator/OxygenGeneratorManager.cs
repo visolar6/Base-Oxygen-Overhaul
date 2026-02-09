@@ -12,13 +12,19 @@ namespace BaseOxygenOverhaul.Mono.OxygenGenerator
 
         private OxygenGeneratorAudioVisual audioVisual;
 
+        private Base _parentBase;
+        public Base ParentBase
+        {
+            get
+            {
+                if (_parentBase == null) _parentBase = GetComponentInParent<Base>();
+                return _parentBase;
+            }
+        }
+
         private void Start()
         {
             audioVisual = GetComponent<OxygenGeneratorAudioVisual>();
-            if (audioVisual == null)
-            {
-                Plugin.Log.LogWarning($"No audio-visual component found for {type} on {gameObject.name}");
-            }
         }
     }
 }

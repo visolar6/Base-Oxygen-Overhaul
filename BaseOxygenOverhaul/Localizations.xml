@@ -20,8 +20,8 @@
         <Text key="Tooltip_LargeOxygenGeneratorFragment">A fragment of an atmospheric processing unit. Scan to learn more.</Text>
 
         <!-- UI -->
-        <Text key="OxygenEfficiency">Oxygen efficiency</Text>
-        <Text key="OxygenNoPower">No power</Text>
+        <Text key="NetOxygenProduction">Net oxygen production</Text>
+        <Text key="UnitsPerSecond">units/sec</Text>
 
         <!-- Options -->
         <Text key="ProductionRateSmallOxygenGenerator">Air synthesizer production rate</Text>

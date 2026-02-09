@@ -10,8 +10,11 @@ namespace BaseOxygenOverhaul.Mono.OxygenGenerator
         protected override void Start()
         {
             base.Start();
+        }
 
-            Plugin.Log.LogInfo($"Initializing audio-visual effects for large oxygen generator on {gameObject.name}");
+        protected override void Update()
+        {
+            base.Update();
         }
     }
 }

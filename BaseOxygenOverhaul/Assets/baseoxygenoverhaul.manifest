@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 522448959
+CRC: 3626825922
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 250a27c9b6707d98326356269ba1702b
+    Hash: 0fbc6b65e216686271e47797dc7c5458
   TypeTreeHash:
     serializedVersion: 2
-    Hash: e2b38992868843a092f4f4f103153e79
+    Hash: b3e0ee69fd9ab42d4df73eaf89ff7963
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -27,9 +27,12 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 54
   Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
 - Class: 65
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/BaseOxygenOverhaul/LargeOxygenGenerator/LargeOxygenGenerator.prefab
 - Assets/BaseOxygenOverhaul/SmallOxygenGenerator/SmallOxygenGenerator.prefab
 Dependencies: []

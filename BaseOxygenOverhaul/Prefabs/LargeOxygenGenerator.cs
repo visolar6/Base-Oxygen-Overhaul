@@ -8,6 +8,9 @@ using UnityEngine;
 using Nautilus.Handlers;
 using System.Collections.Generic;
 using Nautilus.Crafting;
+using Nautilus.Utility;
+using BaseOxygenOverhaul.Types;
+using BaseOxygenOverhaul.Mono.OxygenGenerator;
 
 namespace BaseOxygenOverhaul.Prefabs
 {
@@ -25,13 +28,8 @@ namespace BaseOxygenOverhaul.Prefabs
         {
             var prefab = new CustomPrefab(Info);
 
-            // Clone the bioreactor prefab and modify it
-            prefab.SetGameObject(new CloneTemplate(Info, "83190e0d-d632-4b18-9906-6ad1b91f3315") // bioreactor
-            {
-                ModifyPrefabAsync = ModifyPrefab
-            });
+            prefab.SetGameObject(CreatePrefab);
 
-            // Set unlocks and PDA placement
             prefab
                 .SetUnlock(TechType.PlasteelIngot)
                 .WithCompoundTechsForUnlock(new List<TechType> { TechType.AdvancedWiringKit, TechType.Aerogel, TechType.Lubricant, TechType.FiberMesh })
@@ -49,7 +47,6 @@ namespace BaseOxygenOverhaul.Prefabs
                     destroyAfterScan: false
                 );
 
-            // Set crafting recipe and other properties
             prefab.SetRecipe(new RecipeData()
             {
                 craftAmount = 1,
@@ -72,14 +69,36 @@ namespace BaseOxygenOverhaul.Prefabs
             );
         }
 
-        private static IEnumerator ModifyPrefab(GameObject prefab)
+        private static IEnumerator CreatePrefab(IOut<GameObject> result)
         {
-            // log every component in the prefab for debugging
-            foreach (var component in prefab.GetComponentsInChildren<Component>(true))
-            {
-                // Log all information about the component for debugging
-                Plugin.Log.LogInfo($"Component: {component.GetType().Name}, Active: {component.gameObject.activeSelf}, Layer: {component.gameObject.layer}, Tag: {component.gameObject.tag}");
-            }
+            // Load base prefab
+            var prefab = Plugin.AssetBundle.LoadAsset<GameObject>("LargeOxygenGenerator");
+            PrefabUtils.AddBasicComponents(prefab, Info.ClassID, Info.TechType, LargeWorldEntity.CellLevel.Global);
+            MaterialUtils.ApplySNShaders(prefab, 6);
+
+            // Allow construction
+            var model = prefab.transform.Find("default").gameObject;
+            var constructable = PrefabUtils.AddConstructable(prefab, Info.TechType, ConstructableFlags.Base | ConstructableFlags.Inside | ConstructableFlags.Wall, model);
+            constructable.attachedToBase = true;
+            constructable.deconstructionAllowed = true;
+            constructable.placeDefaultDistance = 5f;
+            constructable.placeMinDistance = 1f;
+            constructable.placeMaxDistance = 10f;
+            constructable.rotationEnabled = false;
+            var constructableBounds = prefab.AddComponent<ConstructableBounds>();
+            model.TryGetComponent<Collider>(out var collider);
+            if (collider == null) Plugin.Log.LogWarning($"Large Oxygen Generator prefab is missing a collider! This may cause issues with construction.");
+            constructableBounds.bounds = collider != null
+                ? new OrientedBounds(collider.bounds.center, Quaternion.identity, collider.bounds.size)
+                : new OrientedBounds(Vector3.zero, Quaternion.identity, Vector3.one);
+
+            // Add behaviours
+            var manager = prefab.EnsureComponent<OxygenGeneratorManager>();
+            manager.type = OxygenGeneratorSize.Large;
+            prefab.EnsureComponent<OxygenGeneratorAudioVisualLarge>();
+            prefab.EnsureComponent<OxygenHandTarget>();
+
+            result.Set(prefab);
             yield break;
         }
     }

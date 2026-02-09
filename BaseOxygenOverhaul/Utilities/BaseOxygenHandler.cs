@@ -7,6 +7,22 @@ namespace BaseOxygenOverhaul.Utilities
 {
     public static class BaseOxygenHandler
     {
+        /// <summary>
+        /// The interval (in seconds) at which the player's oxygen should be depleted when inside a base that doesn't produce enough oxygen to sustain them.
+        /// </summary>
+        public const float BaseOxygenDepletionInterval = 3f;
+
+        /// <summary>
+        /// The maximum amount of oxygen that can be depleted from the player every interval.
+        /// </summary>
+        public const float BaseMaxOxygenDepletionRate = 3f;
+
+        public static Dictionary<OxygenGeneratorSize, float> GeneratorProductionRates => new Dictionary<OxygenGeneratorSize, float>()
+        {
+            { OxygenGeneratorSize.Small, Plugin.Options.ProductionRateSmallOxygenGenerator },
+            { OxygenGeneratorSize.Large, Plugin.Options.ProductionRateLargeOxygenGenerator }
+        };
+
         public static readonly Dictionary<Base.CellType, float> HabitableCellDepletionRates = new Dictionary<Base.CellType, float>()
         {
             { Base.CellType.Connector, 0.1f },
@@ -52,10 +68,8 @@ namespace BaseOxygenOverhaul.Utilities
                         return true;
                     }
 
-                    var baseOxygenProductionRate = GetProductionRate(_base);
-                    var baseOxygenDepletionRate = GetDepletionRate(_base);
-                    var baseOxygenNetProductionRate = baseOxygenProductionRate - baseOxygenDepletionRate;
-                    if (baseOxygenNetProductionRate >= 0f)
+                    var baseOxygenNetRate = GetNetRate(_base);
+                    if (baseOxygenNetRate >= 0f)
                     {
                         // As long as net production rate is above 0f, we can allow oxygen to be added as normal (base produces more than it consumes)
                         baseOxygenDepleteTimer = 0f;
@@ -64,9 +78,9 @@ namespace BaseOxygenOverhaul.Utilities
 
                     // For values between 0 and 1, we deplete the player's oxygen at the appropriate rate, but still block oxygen from being added (base produces some oxygen, but not enough to sustain the player)
                     baseOxygenDepleteTimer += Time.deltaTime;
-                    if (baseOxygenDepleteTimer >= 3f)
+                    if (baseOxygenDepleteTimer >= BaseOxygenDepletionInterval)
                     {
-                        oxygen.oxygenAvailable -= GetOxygenToRemove(3f /*baseOxygenNetProductionRate*/, oxygen.oxygenAvailable);
+                        oxygen.oxygenAvailable -= GetOxygenToRemove(baseOxygenNetRate, oxygen.oxygenAvailable);
                         baseOxygenDepleteTimer = 0f;
                     }
 
@@ -111,6 +125,13 @@ namespace BaseOxygenOverhaul.Utilities
             return false;
         }
 
+        public static float GetNetRate(Base _base)
+        {
+            var baseOxygenProductionRate = GetProductionRate(_base);
+            var baseOxygenDepletionRate = GetDepletionRate(_base);
+            return baseOxygenProductionRate - baseOxygenDepletionRate;
+        }
+
         /// <summary>
         /// Calculates the base's oxygen production rate based on its constructed oxygen generators
         /// </summary>
@@ -125,17 +146,7 @@ namespace BaseOxygenOverhaul.Utilities
                 {
                     var constructable = oxygenGeneratorManager.GetComponentInParent<Constructable>();
                     if (constructable != null && constructable.constructed)
-                    {
-                        switch (oxygenGeneratorManager.type)
-                        {
-                            case OxygenGeneratorSize.Small:
-                                rate += Plugin.Options.ProductionRateSmallOxygenGenerator;
-                                break;
-                            case OxygenGeneratorSize.Large:
-                                rate += Plugin.Options.ProductionRateLargeOxygenGenerator;
-                                break;
-                        }
-                    }
+                        rate += GeneratorProductionRates[oxygenGeneratorManager.type];
                 }
             }
             return rate;
@@ -146,26 +157,40 @@ namespace BaseOxygenOverhaul.Utilities
         /// </summary>
         public static float GetDepletionRate(Base _base)
         {
-            float totalDepletion = 0f;
+            // Count cells per module type
+            var cellTypeCounts = new Dictionary<Base.CellType, int>();
             for (var i = 0; i < _base.cells.Length; i++)
             {
                 var cell = _base.GetCell(i);
-                if (HabitableCellDepletionRates.TryGetValue(cell, out float cellDepletionRate))
-                    totalDepletion += cellDepletionRate;
+                if (HabitableCellDepletionRates.ContainsKey(cell))
+                {
+                    if (!cellTypeCounts.ContainsKey(cell))
+                        cellTypeCounts[cell] = 0;
+                    cellTypeCounts[cell]++;
+                }
+            }
 
+            float totalDepletion = 0f;
+            foreach (var kvp in cellTypeCounts)
+            {
+                var cellType = kvp.Key;
+                var cellCount = kvp.Value;
+                var moduleDepletion = HabitableCellDepletionRates[cellType];
+                float perCellDepletion = moduleDepletion / cellCount;
+                for (int i = 0; i < cellCount; i++) totalDepletion += perCellDepletion;
             }
             return totalDepletion;
         }
 
-        public static float GetOxygenToRemove(float netProductionRate, float oxygenAvailable)
+        public static float GetOxygenToRemove(float netRate, float oxygenAvailable)
         {
             // Any oxygen rate at or above 0 means the base meets or exceeds player needs, so remove nothing
             // This method shouldn't ever be called with a positive production rate, but this is a safeguard against that and against any weird edge cases where the rate might be slightly positive due to floating point imprecision
-            if (netProductionRate >= 0f) return 0f;
+            if (netRate >= 0f) return 0f;
 
-            // For negative rates, the max that should ever be removed is 3f (since we're removing oxygen every 3 seconds, that's 1 unit per second)
+            // For negative rates, the max that should ever be removed is `BaseMaxOxygenDepletionRate`
             // But we also can't remove more oxygen than is actually available, so take the minimum of those two values and the absolute value of the net production rate
-            return Mathf.Min(-netProductionRate, oxygenAvailable, 3f);
+            return Mathf.Min(-netRate, oxygenAvailable, BaseMaxOxygenDepletionRate);
         }
     }
 }
