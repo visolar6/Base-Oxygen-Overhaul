@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BaseOxygenOverhaul.Mono.OxygenGenerator;
 using BaseOxygenOverhaul.Types;
+using System.Linq;
 
 namespace BaseOxygenOverhaul.Utilities
 {
@@ -37,7 +38,7 @@ namespace BaseOxygenOverhaul.Utilities
         /// </summary>
         public const float SmartWarningsInterval = 30f;
 
-        public static readonly Dictionary<OxygenGeneratorSize, float> GeneratorProductionRates = new Dictionary<OxygenGeneratorSize, float>()
+        public static Dictionary<OxygenGeneratorSize, float> GeneratorProductionRates => new Dictionary<OxygenGeneratorSize, float>()
         {
             { OxygenGeneratorSize.Small, Plugin.Options.ProductionRateSmallOxygenGenerator },
             { OxygenGeneratorSize.Large, Plugin.Options.ProductionRateLargeOxygenGenerator }
@@ -55,6 +56,21 @@ namespace BaseOxygenOverhaul.Utilities
             { Base.CellType.Room, 0.25f },
             { Base.CellType.LargeRoom, 1f },
             { Base.CellType.LargeRoomRotated, 1f }
+        };
+
+        // Number of cells each module type occupies (needed to calculate actual module count from cell count)
+        public static readonly Dictionary<Base.CellType, int> CellsPerModule = new Dictionary<Base.CellType, int>()
+        {
+            { Base.CellType.Connector, 1 },
+            { Base.CellType.Corridor, 1 },
+            { Base.CellType.Observatory, 1 },
+            { Base.CellType.MapRoom, 1 },
+            { Base.CellType.MapRoomRotated, 1 },
+            { Base.CellType.Moonpool, 1 },
+            { Base.CellType.MoonpoolRotated, 1 },
+            { Base.CellType.Room, 1 },
+            { Base.CellType.LargeRoom, 8 },  // TODO: Verify the actual cell count for Large Rooms
+            { Base.CellType.LargeRoomRotated, 8 }  // TODO: Verify the actual cell count for Large Rooms
         };
 
         // Leave this public so the Player_Patch can set it when the player enters or leaves a base
@@ -263,38 +279,42 @@ namespace BaseOxygenOverhaul.Utilities
         }
 
         /// <summary>
-        /// Calculates the base's oxygen depletion rate based on its cells
+        /// Calculates the base's oxygen depletion rate based on its modules (not individual cells)
         /// </summary>
         public static float GetDepletionRate(Base _base)
         {
             // Count cells per module type
             var cellTypeCounts = new Dictionary<Base.CellType, int>();
-            foreach (Int3 cellPos in _base.AllCells)
+            for (var i = 0; i < _base.cells.Length; i++)
             {
-                var cell = _base.GetCell(cellPos);
-                if (HabitableCellDepletionRates.ContainsKey(cell))
+                var cellType = _base.cells[i];
+                if (HabitableCellDepletionRates.ContainsKey(cellType))
                 {
-                    if (!cellTypeCounts.ContainsKey(cell))
-                        cellTypeCounts[cell] = 0;
-                    cellTypeCounts[cell]++;
-                    Plugin.Log.LogDebug($"Base Oxygen Depletion - Found cell of type {cell} at position {cellPos}, total count for this cell type is now {cellTypeCounts[cell]}");
-                }
-                else
-                {
-                    Plugin.Log.LogDebug($"Base Oxygen Depletion - Found cell of type {cell} at position {cellPos}, which does not contribute to oxygen depletion");
+                    if (!cellTypeCounts.ContainsKey(cellType))
+                        cellTypeCounts[cellType] = 0;
+                    cellTypeCounts[cellType]++;
                 }
             }
 
+            Plugin.Log.LogInfo($"Cell Type Counts: {string.Join(", ", cellTypeCounts.Select(kvp => $"{kvp.Key}: {kvp.Value}"))}");
+
+            // Calculate module counts and total depletion
             float totalDepletion = 0f;
             foreach (var kvp in cellTypeCounts)
             {
                 var cellType = kvp.Key;
                 var cellCount = kvp.Value;
-                var moduleDepletion = HabitableCellDepletionRates[cellType];
-                float perCellDepletion = moduleDepletion / cellCount;
-                for (int i = 0; i < cellCount; i++) totalDepletion += perCellDepletion;
-                Plugin.Log.LogDebug($"Base Oxygen Depletion - Cell Type: {cellType}, Cell Count: {cellCount}, Module Depletion: {moduleDepletion}, Per Cell Depletion: {perCellDepletion}, Total Depletion So Far: {totalDepletion}");
+                var depletionPerModule = HabitableCellDepletionRates[cellType];
+                var cellsPerModule = CellsPerModule[cellType];
+
+                // Calculate the actual number of modules by dividing cell count by cells per module
+                int moduleCount = cellCount / cellsPerModule;
+                float moduleDepletion = depletionPerModule * moduleCount;
+                totalDepletion += moduleDepletion;
+
+                Plugin.Log.LogDebug($"Cell Type: {cellType}, Cell Count: {cellCount}, Cells Per Module: {cellsPerModule}, Module Count: {moduleCount}, Depletion Per Module: {depletionPerModule}, Total Module Depletion: {moduleDepletion}");
             }
+
             Plugin.Log.LogInfo($"Base Total Oxygen Depletion Rate: {totalDepletion}");
             return totalDepletion;
         }
