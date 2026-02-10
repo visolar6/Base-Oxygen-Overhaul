@@ -73,8 +73,8 @@ Configurable through in-game mod options menu:
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `ProductionRateSmallOxygenGenerator` | Slider | 0.5 | Air synthesizer oxygen/second |
-| `ProductionRateLargeOxygenGenerator` | Slider | 4.0 | Atmospheric processing unit oxygen/second |
-| `ShowNoOxygenGeneratorWarnings` | Toggle | true | Display warnings when base has no generators |
+| `ProductionRateLargeOxygenGenerator` (hidden) | Slider | 4.0 | Atmospheric processing unit oxygen/second |
+| `ShowSmartWarnings` | Toggle | true | Display warnings when base has no generators |
 | `PartialOxygenLoss` | Toggle | true | Proportional oxygen loss vs. maximum loss |
 | `AllowBaseSnorkel` | Toggle | false | Infinite oxygen for bases with above-water sections |
 
@@ -141,12 +141,6 @@ The mod is optimized to run efficiently:
 - **Interval-based updates**: Expensive calculations (net rate, habitable cells) update every 2-3 seconds
 - **Component caching**: Manager references and localized strings are cached in MonoBehaviours
 - **Early returns**: Quick checks before expensive operations
-
-### Key Timers
-- `BaseOxygenDepletionInterval`: 3s - How often oxygen is depleted
-- `BaseNetRateCheckInterval`: 2s - How often production/consumption is recalculated
-- `HabitableCellCheckInterval`: 3s - How often above-water checks happen
-- `NoOxygenGeneratorWarningInterval`: 10s - How often warnings are shown
 
 ## Testing
 
