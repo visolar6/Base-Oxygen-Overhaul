@@ -10,13 +10,13 @@ This mod transforms Subnautica's base oxygen mechanics by making oxygen a manage
 
 - **Oxygen Generators**: Two new buildable oxygen generators
   - **Air Synthesizer**: Compact, low-capacity generator for small bases
-  - **Atmospheric Processing Unit**: High-capacity generator for large bases
+  - **Atmospheric Processing Unit**: High-capacity generator for large bases (hidden until implementation is complete)
 - **Dynamic Oxygen Consumption**: Each base compartment consumes oxygen based on size
 - **Production/Consumption Balance**: Players must maintain positive net oxygen production
 - **Partial Oxygen Loss**: Optional proportional oxygen depletion based on production deficit
 - **Base Snorkel System**: Optional infinite oxygen for bases with above-water habitable sections
 - **Multi-language Support**: 12 languages including English, Spanish, French, German, Russian, Japanese, Korean, Chinese, Portuguese, Polish, Italian, and Turkish
-- **Audio/Visual Feedback**: Custom sounds and status displays for generators
+- **Visual Feedback**: Custom hover text and O2 status display for generators
 
 ## Requirements
 
