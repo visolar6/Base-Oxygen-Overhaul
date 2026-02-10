@@ -10,5 +10,14 @@ namespace BaseOxygenOverhaul
 
         [Slider(LabelLanguageId = "ProductionRateLargeOxygenGenerator", TooltipLanguageId = "Tooltip_ProductionRateLargeOxygenGenerator", DefaultValue = 4.0f, Min = 1.0f, Max = 10.0f, Step = 0.1f)]
         public float ProductionRateLargeOxygenGenerator = 4.0f;
+
+        [Toggle(LabelLanguageId = "ShowSmartWarnings", TooltipLanguageId = "Tooltip_ShowSmartWarnings")]
+        public bool ShowSmartWarnings = true;
+
+        [Toggle(LabelLanguageId = "PartialOxygenLoss", TooltipLanguageId = "Tooltip_PartialOxygenLoss")]
+        public bool PartialOxygenLoss = true;
+
+        [Toggle(LabelLanguageId = "AllowBaseSnorkel", TooltipLanguageId = "Tooltip_AllowBaseSnorkel")]
+        public bool AllowBaseSnorkel = false;
     }
 }

@@ -1,0 +1,1 @@
+Make oxygen management matter in Subnautica! Install generators to supply breathable air. Each base compartment consumes oxygen based on size. Balance production vs consumption or face the consequences. Features new Air Synthesizer generator, visual displays, configurable difficulty, and 12 languages.

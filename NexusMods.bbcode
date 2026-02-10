@@ -1,0 +1,89 @@
+[center][size=6][b]Base Oxygen Overhaul[/b][/size][/center]
+
+[size=5][b]What's This About?[/b][/size]
+
+So I got tired of how oxygen in bases is basically infinite and meaningless. You can build a sprawling 50-room complex at 500m depth and never think twice about where the air is coming from. That always felt weird to me.
+
+This mod changes that. Now your bases actually need oxygen generators to stay breathable, and different rooms/modules consume different amounts based on their size. Build too big without enough generators? You're gonna have a bad time.
+
+[size=5][b]The Main Features[/b][/size]
+
+[b]Air Synthesizer[/b] - This is the oxygen generator you'll be building. It's a compact unit that produces oxygen for your base. You'll need to place enough of them to keep up with your base's consumption, which scales with how many rooms and corridors you've built.
+
+[b]Atmospheric Processing Unit[/b] - A larger, more powerful generator that I'm still working on. Should be ready in a future update.
+
+[b]How It Works[/b] - Every base module has an oxygen consumption rate. Small corridors use less, big moonpools and multipurpose rooms use more. Your generators produce oxygen, and if production doesn't exceed consumption, you start losing oxygen while inside the base.
+
+The nice thing is you can tweak everything in the mod options. Want generators to produce more oxygen so it's easier? Go for it. Want to make it brutal? Crank the production way down.
+
+[b]Base Snorkel[/b] - There's an option (disabled by default) that makes any base with at least one habitable section above water act as if it has infinite oxygen. Personally I leave this off but some people like having the option.
+
+[b]Visual Feedback[/b] - Generators have status displays that show ONLINE/OFFLINE/FLOODED. You can also hover over them to see your base's net oxygen production rate, which is super helpful for figuring out if you need to add more generators.
+
+[size=5][b]Why I Made This[/b][/size]
+
+Honestly? Base building in vanilla Subnautica feels a bit hollow once you have the resources. You just spam rooms without any real consequences. I wanted to add another layer of planning where you have to think about life support infrastructure, not just "does this look cool."
+
+In early game, you'll be carefully planning your first few base pieces and prioritizing that first Air Synthesizer. Mid-game, expanding means deciding if you need more generators first or if you can risk building that big observatory room. Late game, you're managing multiple generators across a sprawling deep-sea complex.
+
+The mod also makes flooding actually dangerous - flooded generators shut down, which can cascade into oxygen problems if you don't have redundancy built in.
+
+[size=5][b]Difficulty Options[/b][/size]
+
+There's several toggles in the mod options:
+[list]
+[*][b]Partial Oxygen Loss[/b] - When enabled (default), oxygen loss scales with how negative your production is. When disabled, you lose oxygen at max rate regardless. I recommend keeping it on unless you want a serious challenge.
+[*][b]Base Snorkel[/b] - Mentioned above. Off by default.
+[*][b]Production Rates[/b] - Sliders to adjust how much oxygen the generators produce. Default values feel balanced to me but everyone plays differently.
+[*][b]Warnings[/b] - Toggle notifications when the game detects you have no generators in your base.
+[/list]
+
+[size=5][b]Installation[/b][/size]
+
+You'll need [b]BepInEx[/b] and [b]Nautilus[/b] installed first (these are the standard modding frameworks for Subnautica). Once you have those, just extract this mod into your [font=Courier New]BepInEx/plugins/[/font] folder and you're good to go.
+
+[size=5][b]What's Actually Included[/b][/size]
+
+[list]
+[*]The Air Synthesizer buildable with a custom model (thanks to AndreaDev3d for the mesh and textures)
+[*]Oxygen production/consumption system that affects all bases
+[*]Status displays on the generators (ONLINE/OFFLINE/FLOODED)
+[*]Custom ambient sounds for the generators
+[*]In-game mod options menu with sliders and toggles
+[*]Encyclopedia entry about oxygen generation
+[*]Full localization for 12 languages
+[/list]
+
+[size=5][b]Performance[/b][/size]
+
+I've spent a fair bit of time optimizing this. The oxygen calculation only runs when you're actually in a base, and it uses cached values with timers to avoid expensive checks every single frame. Should run smoothly even if you have a truly massive base (I've tested with 100+ pieces and it's fine).
+
+[size=5][b]Known Issues / Future Plans[/b][/size]
+
+The large generator (Atmospheric Processing Unit) isn't ready yet - still working on the model and balancing. Should be in the next update.
+
+The mod doesn't affect Cyclops oxygen at all - only stationary bases. This is intentional.
+
+I'm considering adding a "days of oxygen remaining" readout somewhere but haven't figured out where to put it in the UI yet.
+
+[size=5][b]Compatibility[/b][/size]
+
+Should be compatible with most other mods. It patches the Oxygen.AddOxygen method to intercept oxygen gain, so anything that modifies player oxygen might interact with this. Haven't found any conflicts yet though.
+
+Works with all the major base-building mods I've tested.
+
+[size=5][b]Bug Reports / Feedback[/b][/size]
+
+If you run into issues, post them in the comments and I'll try to fix them. Include your log file if you can (it's in BepInEx/LogOutput.log).
+
+Feature suggestions are welcome too, though no promises on implementation timeline since this is a hobby project.
+
+[hr]
+
+[size=2][b]Credits[/b]
+[list]
+[*]AndreaDev3d for the Air Synthesizer model and textures
+[*]Nautilus team for making Subnautica modding way easier than it used to be
+[*]BepInEx folks for the mod loader
+[*]Everyone in the Subnautica Modding discord who answered my random questions
+[/list][/size]

@@ -11,24 +11,9 @@ namespace BaseOxygenOverhaul
 {
     public static class Global
     {
-        public enum EncyclopediaKeys
+        public static class EncyclopediaKeys
         {
-            OxygenGeneration,
-            SmallOxygenGenerator,
-            LargeOxygenGenerator,
-        }
-
-        public enum AssetKeys
-        {
-            SmallOxygenGeneratorPrefab,
-            SmallOxygenGeneratorIcon,
-            SmallOxygenGeneratorImage,
-            SmallOxygenGeneratorPopup,
-
-            LargeOxygenGeneratorPrefab,
-            LargeOxygenGeneratorIcon,
-            LargeOxygenGeneratorImage,
-            LargeOxygenGeneratorPopup,
+            public const string OxygenGeneration = "OxygenGeneration";
         }
 
         public static class FMODSoundIds
@@ -44,68 +29,38 @@ namespace BaseOxygenOverhaul
 
         public static void Patch()
         {
-            foreach (var key in System.Enum.GetNames(typeof(EncyclopediaKeys)))
-                AddEncylopediaEntry(key, GetEncyclopediaKeyPath((EncyclopediaKeys)System.Enum.Parse(typeof(EncyclopediaKeys), key)));
+            PDAHandler.AddEncyclopediaEntry(
+                key: EncyclopediaKeys.OxygenGeneration,
+                path: "Tech/Habitats",
+                title: null,
+                desc: null,
+                image: null,
+                popupImage: null,
+                unlockSound: null,
+                voiceLog: null
+            );
 
-            RegisterFMODSound();
+            var audioPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Assets", "Audio");
+            var soundSource = new ModFolderSoundSource(audioPath);
+            var soundBuilder = new FModSoundBuilder(soundSource);
+            soundBuilder.CreateNewEvent(FMODSoundIds.SmallOxygenGeneratorAmbient, AudioUtils.BusPaths.SFX)
+                .SetMode3D(1f, 4f, false)
+                .SetFadeDuration(0.5f)
+                .SetSound(FMODSoundIds.SmallOxygenGeneratorAmbient)
+                .Register();
+            soundBuilder.CreateNewEvent(FMODSoundIds.LargeOxygenGeneratorAmbient, AudioUtils.BusPaths.SFX)
+                .SetMode3D(2f, 6f, false)
+                .SetFadeDuration(1f)
+                .SetSound(FMODSoundIds.LargeOxygenGeneratorAmbient)
+                .Register();
 
             StoryGoalHandler.RegisterCustomEvent(
                 key: StoryGoals.EnterBaseOxygenOverhaulStoryGoal.key,
                 customEventCallback: () =>
                 {
-                    PDAEncyclopedia.AddAndPlaySound(GetEncyclopediaKey(EncyclopediaKeys.OxygenGeneration));
+                    PDAEncyclopedia.AddAndPlaySound(EncyclopediaKeys.OxygenGeneration);
                 }
             );
-        }
-
-        public static string GetEncyclopediaKey(EncyclopediaKeys key) => System.Enum.GetName(typeof(EncyclopediaKeys), key);
-        public static string GetEncyclopediaKeyPath(EncyclopediaKeys key)
-        {
-            switch (key)
-            {
-                case EncyclopediaKeys.OxygenGeneration:
-                case EncyclopediaKeys.SmallOxygenGenerator:
-                case EncyclopediaKeys.LargeOxygenGenerator:
-                    return "Tech/Habitats";
-                default:
-                    return "Tech";
-            }
-        }
-
-        private static void AddEncylopediaEntry(string baseKey, string path, FMODAsset unlockSound = null, FMODAsset voiceLog = null)
-        {
-            var titleKey = $"Ency_{baseKey}";
-            var descKey = $"EncyDesc_{baseKey}";
-            var imageKey = $"{baseKey}/{baseKey}Image";
-            var popupImageKey = $"{baseKey}/{baseKey}Popup";
-            Plugin.Log.LogInfo($"Registering encyclopedia entry with key {baseKey}, title {titleKey}, desc {descKey}, image {imageKey}, popup {popupImageKey}");
-
-            PDAHandler.AddEncyclopediaEntry(
-                key: baseKey,
-                path: path,
-                title: titleKey,
-                desc: descKey,
-                image: Plugin.AssetBundle.LoadAsset<Texture2D>(imageKey),
-                popupImage: Plugin.AssetBundle.LoadAsset<Sprite>(popupImageKey),
-                unlockSound: unlockSound ?? KnownTechHandler.DefaultUnlockData.BasicUnlockSound,
-                voiceLog: voiceLog
-            );
-        }
-
-        private static void RegisterFMODSound()
-        {
-            var soundSource = new ModFolderSoundSource(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Assets"));
-            var soundBuilder = new FModSoundBuilder(soundSource);
-
-            soundBuilder.CreateNewEvent(FMODSoundIds.SmallOxygenGeneratorAmbient, AudioUtils.BusPaths.SFX)
-                .SetMode3D(0.5f, 1f, true)
-                .SetSound(FMODSoundIds.SmallOxygenGeneratorAmbient)
-                .Register();
-
-            soundBuilder.CreateNewEvent(FMODSoundIds.LargeOxygenGeneratorAmbient, AudioUtils.BusPaths.SFX)
-                .SetMode3D(0.75f, 1.5f, true)
-                .SetSound(FMODSoundIds.LargeOxygenGeneratorAmbient)
-                .Register();
         }
     }
 }

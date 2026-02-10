@@ -44,7 +44,7 @@ namespace BaseOxygenOverhaul.Prefabs
                     blueprint: LargeOxygenGenerator.Info.TechType,
                     scanTime: 5f,
                     isFragment: true,
-                    encyKey: Global.GetEncyclopediaKey(Global.EncyclopediaKeys.LargeOxygenGenerator),
+                    encyKey: "Ency_LargeOxygenGenerator",
                     destroyAfterScan: true
                 );
 

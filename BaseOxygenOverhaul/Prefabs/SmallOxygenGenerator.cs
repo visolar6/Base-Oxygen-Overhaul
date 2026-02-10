@@ -28,7 +28,8 @@ namespace BaseOxygenOverhaul.Prefabs
 
             prefab.SetGameObject(CreatePrefab);
 
-            prefab.SetUnlock(TechType.Titanium)
+            prefab
+                .SetUnlock(TechType.Titanium)
                 .WithCompoundTechsForUnlock(new List<TechType> { TechType.WiringKit, TechType.FiberMesh })
                 .WithAnalysisTech(null, null, null)
                 .WithPdaGroupCategoryAfter(
@@ -60,19 +61,27 @@ namespace BaseOxygenOverhaul.Prefabs
 
             // Allow construction
             var model = prefab.transform.Find("default").gameObject;
+            // Push the model back slightly so it sits inside of the wall slightly
+            model.transform.localPosition += new Vector3(0f, 0f, -0.02f);
             var constructable = PrefabUtils.AddConstructable(prefab, Info.TechType, ConstructableFlags.Base | ConstructableFlags.Inside | ConstructableFlags.Wall, model);
             constructable.rotationEnabled = false;
             constructable.placeDefaultDistance = 5f;
             constructable.placeMinDistance = 1f;
             constructable.placeMaxDistance = 10f;
             var constructableBounds = prefab.AddComponent<ConstructableBounds>();
-            var boxCollider = model.GetComponent<BoxCollider>();
-            constructableBounds.bounds = new OrientedBounds(boxCollider.bounds.center, Quaternion.identity, boxCollider.bounds.size);
+            model.TryGetComponent<Collider>(out var collider);
+            if (collider == null) Plugin.Log.LogWarning($"SmallOxygenGenerator prefab is missing a collider! This may cause issues with construction.");
+            constructableBounds.bounds = collider != null
+                ? new OrientedBounds(collider.bounds.center, Quaternion.identity, collider.bounds.size)
+                : new OrientedBounds(Vector3.zero, Quaternion.identity, Vector3.one);
+
+            // Add O2 display
+            prefab.AddComponent<OxygenGeneratorO2Display>();
 
             // Add behaviours
             var manager = prefab.EnsureComponent<OxygenGeneratorManager>();
-            manager.type = OxygenGeneratorSize.Small;
-            prefab.EnsureComponent<OxygenGeneratorAudioVisualSmall>();
+            manager.Size = OxygenGeneratorSize.Small;
+            // prefab.EnsureComponent<OxygenGeneratorAudioVisual>();
             prefab.EnsureComponent<OxygenHandTarget>();
 
             result.Set(prefab);

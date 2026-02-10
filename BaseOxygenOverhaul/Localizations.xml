@@ -21,12 +21,464 @@
 
         <!-- UI -->
         <Text key="NetOxygenProduction">Net oxygen production</Text>
-        <Text key="UnitsPerSecond">units/sec</Text>
+        <Text key="O2PerSecond">O₂/sec</Text>
+        <Text key="O2StatusLabel">O₂ STATUS</Text>
+        <Text key="O2StatusOnline">ONLINE</Text>
+        <Text key="O2StatusOffline">OFFLINE</Text>
+        <Text key="O2StatusFlooded">FLOODED</Text>
+        <Text key="NoOxygenGeneratorWarning">Warning: No oxygen generators detected in base!</Text>
+        <Text key="NegativeNetOxygenProductionWarning">Warning: Net oxygen production is negative!</Text>
 
         <!-- Options -->
         <Text key="ProductionRateSmallOxygenGenerator">Air synthesizer production rate</Text>
         <Text key="Tooltip_ProductionRateSmallOxygenGenerator">Adjust the oxygen production rate for air synthesizers.</Text>
         <Text key="ProductionRateLargeOxygenGenerator">Atmospheric processing unit production rate</Text>
         <Text key="Tooltip_ProductionRateLargeOxygenGenerator">Adjust the oxygen production rate for atmospheric processing units.</Text>
+        <Text key="ShowSmartWarnings">Show no oxygen generator warnings</Text>
+        <Text key="Tooltip_ShowSmartWarnings">If enabled, a notification will be shown occasionally alerting you that there are no oxygen generators in the base, and no snorkel is detected (if snorkel is enabled).</Text>
+        <Text key="PartialOxygenLoss">Partial oxygen loss</Text>
+        <Text key="Tooltip_PartialOxygenLoss">If enabled, having a net negative base oxygen production will cause the player to lose oxygen proportional to how negative the production is, instead of always losing the maximum amount (3 seconds of oxygen every 3 seconds).</Text>
+        <Text key="AllowBaseSnorkel">Allow base snorkel</Text>
+        <Text key="Tooltip_AllowBaseSnorkel">If enabled, having at least one habitable base piece above the water's surface will act as an infinite oxygen supply. Leaving this disabled will prevent default oxygen generation in above-water bases.</Text>
+    </LocalizationPackage>
+
+    <LocalizationPackage Lang="Spanish">
+        <!-- Encyclopedia Entries -->
+        <Text key="Ency_OxygenGeneration">Generación de oxígeno</Text>
+        <Text key="EncyDesc_OxygenGeneration">La generación de oxígeno es esencial para mantener la vida en hábitats submarinos. Cada compartimento de la base consume oxígeno, y las bases más grandes o complejas requieren mayor producción de oxígeno para permanecer habitables. Los generadores de oxígeno especializados convierten el agua en aire respirable, alimentados por las reservas de energía de la base. Para garantizar condiciones atmosféricas seguras, instale suficientes generadores para igualar el tamaño de su base y monitoree los niveles de oxígeno mientras expande o modifica su hábitat.</Text>
+        <Text key="Ency_SmallOxygenGenerator">Sintetizador de aire</Text>
+        <Text key="EncyDesc_SmallOxygenGenerator">El sintetizador de aire es un generador de oxígeno compacto diseñado para bases pequeñas o como fuente suplementaria de aire respirable. Convierte eficientemente el agua en oxígeno, proporcionando un suministro constante para mantener condiciones atmosféricas seguras. Ideal para el desarrollo temprano de bases o como respaldo de emergencia, el sintetizador de aire es un componente esencial para cualquier hábitat submarino.</Text>
+        <Text key="Ency_LargeOxygenGenerator">Unidad de procesamiento atmosférico</Text>
+        <Text key="EncyDesc_LargeOxygenGenerator">La unidad de procesamiento atmosférico es un generador de oxígeno de alta capacidad diseñado para bases grandes o aquellas con mayores demandas de oxígeno. Utiliza tecnología avanzada para convertir eficientemente el agua en aire respirable, asegurando un suministro de oxígeno estable y suficiente para hábitats submarinos extensos. La unidad de procesamiento atmosférico es crucial para mantener condiciones atmosféricas seguras a medida que su base se expande y se vuelve más compleja.</Text>
+        <Text key="Ency_LargeOxygenGeneratorFragment">Fragmento de unidad de procesamiento atmosférico</Text>
+        <Text key="EncyDesc_LargeOxygenGeneratorFragment">Un fragmento de una unidad de procesamiento atmosférico. Escanea para aprender más.</Text>
+
+        <!-- Buildables -->
+        <Text key="SmallOxygenGenerator">Sintetizador de aire</Text>
+        <Text key="Tooltip_SmallOxygenGenerator">Suministra una pequeña cantidad de oxígeno a tu base.</Text>
+        <Text key="LargeOxygenGenerator">Unidad de procesamiento atmosférico</Text>
+        <Text key="Tooltip_LargeOxygenGenerator">Suministra una gran cantidad de oxígeno a tu base.</Text>
+        <Text key="LargeOxygenGeneratorFragment">Fragmento de unidad de procesamiento atmosférico</Text>
+        <Text key="Tooltip_LargeOxygenGeneratorFragment">Un fragmento de una unidad de procesamiento atmosférico. Escanea para aprender más.</Text>
+
+        <!-- UI -->
+        <Text key="NetOxygenProduction">Producción neta de oxígeno</Text>
+        <Text key="O2PerSecond">O₂/seg</Text>
+        <Text key="O2StatusLabel">ESTADO O₂</Text>
+        <Text key="O2StatusOnline">EN LÍNEA</Text>
+        <Text key="O2StatusOffline">DESCONECTADO</Text>
+        <Text key="O2StatusFlooded">INUNDADO</Text>
+
+        <!-- Options -->
+        <Text key="ProductionRateSmallOxygenGenerator">Tasa de producción del sintetizador de aire</Text>
+        <Text key="Tooltip_ProductionRateSmallOxygenGenerator">Ajusta la tasa de producción de oxígeno para los sintetizadores de aire.</Text>
+        <Text key="ProductionRateLargeOxygenGenerator">Tasa de producción de la unidad de procesamiento atmosférico</Text>
+        <Text key="Tooltip_ProductionRateLargeOxygenGenerator">Ajusta la tasa de producción de oxígeno para las unidades de procesamiento atmosférico.</Text>
+        <Text key="ShowSmartWarnings">Mostrar advertencias de ausencia de generador de oxígeno</Text>
+        <Text key="Tooltip_ShowSmartWarnings">Si está habilitado, se mostrará una notificación ocasionalmente alertándole que no hay generadores de oxígeno en la base y no se detecta esnórquel (si el esnórquel está habilitado).</Text>
+        <Text key="PartialOxygenLoss">Pérdida parcial de oxígeno</Text>
+        <Text key="Tooltip_PartialOxygenLoss">Si está habilitado, tener una producción neta negativa de oxígeno en la base hará que el jugador pierda oxígeno proporcional a cuán negativa es la producción, en lugar de perder siempre la cantidad máxima (3 segundos de oxígeno cada 3 segundos).</Text>
+        <Text key="AllowBaseSnorkel">Permitir esnórquel de base</Text>
+        <Text key="Tooltip_AllowBaseSnorkel">Si está habilitado, tener al menos una pieza de base habitable sobre la superficie del agua actuará como un suministro infinito de oxígeno. Dejar esto deshabilitado impedirá la generación de oxígeno predeterminada en bases sobre el agua.</Text>
+    </LocalizationPackage>
+
+    <LocalizationPackage Lang="French">
+        <!-- Encyclopedia Entries -->
+        <Text key="Ency_OxygenGeneration">Génération d'oxygène</Text>
+        <Text key="EncyDesc_OxygenGeneration">La génération d'oxygène est essentielle pour maintenir la vie dans les habitats sous-marins. Chaque compartiment de base consomme de l'oxygène, et les bases plus grandes ou plus complexes nécessitent une plus grande production d'oxygène pour rester habitables. Les générateurs d'oxygène spécialisés convertissent l'eau en air respirable, alimentés par les réserves d'énergie de la base. Pour assurer des conditions atmosphériques sûres, installez suffisamment de générateurs pour correspondre à la taille de votre base et surveillez les niveaux d'oxygène lorsque vous agrandissez ou modifiez votre habitat.</Text>
+        <Text key="Ency_SmallOxygenGenerator">Synthétiseur d'air</Text>
+        <Text key="EncyDesc_SmallOxygenGenerator">Le synthétiseur d'air est un générateur d'oxygène compact conçu pour les petites bases ou comme source supplémentaire d'air respirable. Il convertit efficacement l'eau en oxygène, fournissant un approvisionnement constant pour maintenir des conditions atmosphériques sûres. Idéal pour le développement précoce de bases ou comme secours d'urgence, le synthétiseur d'air est un composant essentiel pour tout habitat sous-marin.</Text>
+        <Text key="Ency_LargeOxygenGenerator">Unité de traitement atmosphérique</Text>
+        <Text key="EncyDesc_LargeOxygenGenerator">L'unité de traitement atmosphérique est un générateur d'oxygène de grande capacité conçu pour les grandes bases ou celles ayant des besoins en oxygène plus élevés. Elle utilise une technologie avancée pour convertir efficacement l'eau en air respirable, assurant un approvisionnement en oxygène stable et suffisant pour les vastes habitats sous-marins. L'unité de traitement atmosphérique est cruciale pour maintenir des conditions atmosphériques sûres à mesure que votre base s'agrandit et devient plus complexe.</Text>
+        <Text key="Ency_LargeOxygenGeneratorFragment">Fragment d'unité de traitement atmosphérique</Text>
+        <Text key="EncyDesc_LargeOxygenGeneratorFragment">Un fragment d'une unité de traitement atmosphérique. Scannez pour en savoir plus.</Text>
+
+        <!-- Buildables -->
+        <Text key="SmallOxygenGenerator">Synthétiseur d'air</Text>
+        <Text key="Tooltip_SmallOxygenGenerator">Fournit une petite quantité d'oxygène à votre base.</Text>
+        <Text key="LargeOxygenGenerator">Unité de traitement atmosphérique</Text>
+        <Text key="Tooltip_LargeOxygenGenerator">Fournit une grande quantité d'oxygène à votre base.</Text>
+        <Text key="LargeOxygenGeneratorFragment">Fragment d'unité de traitement atmosphérique</Text>
+        <Text key="Tooltip_LargeOxygenGeneratorFragment">Un fragment d'une unité de traitement atmosphérique. Scannez pour en savoir plus.</Text>
+
+        <!-- UI -->
+        <Text key="NetOxygenProduction">Production nette d'oxygène</Text>
+        <Text key="O2PerSecond">O₂/sec</Text>
+        <Text key="O2StatusLabel">ÉTAT O₂</Text>
+        <Text key="O2StatusOnline">EN LIGNE</Text>
+        <Text key="O2StatusOffline">HORS LIGNE</Text>
+        <Text key="O2StatusFlooded">INONDÉ</Text>
+
+        <!-- Options -->
+        <Text key="ProductionRateSmallOxygenGenerator">Taux de production du synthétiseur d'air</Text>
+        <Text key="Tooltip_ProductionRateSmallOxygenGenerator">Ajustez le taux de production d'oxygène pour les synthétiseurs d'air.</Text>
+        <Text key="ProductionRateLargeOxygenGenerator">Taux de production de l'unité de traitement atmosphérique</Text>
+        <Text key="Tooltip_ProductionRateLargeOxygenGenerator">Ajustez le taux de production d'oxygène pour les unités de traitement atmosphérique.</Text>
+        <Text key="ShowSmartWarnings">Afficher les avertissements d'absence de générateur d'oxygène</Text>
+        <Text key="Tooltip_ShowSmartWarnings">Si activé, une notification sera affichée occasionnellement vous avertissant qu'il n'y a pas de générateurs d'oxygène dans la base et qu'aucun tuba n'est détecté (si le tuba est activé).</Text>
+        <Text key="PartialOxygenLoss">Perte partielle d'oxygène</Text>
+        <Text key="Tooltip_PartialOxygenLoss">Si activé, avoir une production nette d'oxygène négative dans la base fera perdre au joueur de l'oxygène proportionnellement à la négativité de la production, au lieu de toujours perdre le montant maximum (3 secondes d'oxygène toutes les 3 secondes).</Text>
+        <Text key="AllowBaseSnorkel">Autoriser le tuba de base</Text>
+        <Text key="Tooltip_AllowBaseSnorkel">Si activé, avoir au moins un morceau de base habitable au-dessus de la surface de l'eau agira comme une source d'oxygène infinie. Laisser cela désactivé empêchera la génération d'oxygène par défaut dans les bases au-dessus de l'eau.</Text>
+    </LocalizationPackage>
+
+    <LocalizationPackage Lang="German">
+        <!-- Encyclopedia Entries -->
+        <Text key="Ency_OxygenGeneration">Sauerstoffgenerierung</Text>
+        <Text key="EncyDesc_OxygenGeneration">Die Sauerstoffgenerierung ist für die Aufrechterhaltung des Lebens in Unterwasserhabitaten unerlässlich. Jedes Basis-Abteil verbraucht Sauerstoff, und größere oder komplexere Basen benötigen eine höhere Sauerstoffproduktion, um bewohnbar zu bleiben. Spezialisierte Sauerstoffgeneratoren wandeln Wasser in atembare Luft um, angetrieben durch die Energiereserven der Basis. Um sichere atmosphärische Bedingungen zu gewährleisten, installieren Sie ausreichend Generatoren, um die Größe Ihrer Basis anzupassen, und überwachen Sie die Sauerstoffwerte, während Sie Ihren Lebensraum erweitern oder modifizieren.</Text>
+        <Text key="Ency_SmallOxygenGenerator">Luftsynthesizer</Text>
+        <Text key="EncyDesc_SmallOxygenGenerator">Der Luftsynthesizer ist ein kompakter Sauerstoffgenerator, der für kleinere Basen oder als ergänzende Quelle für atembare Luft konzipiert ist. Er wandelt Wasser effizient in Sauerstoff um und liefert eine stetige Versorgung zur Aufrechterhaltung sicherer atmosphärischer Bedingungen. Ideal für die frühe Basisentwicklung oder als Notfall-Backup ist der Luftsynthesizer eine wesentliche Komponente für jeden Unterwasserlebensraum.</Text>
+        <Text key="Ency_LargeOxygenGenerator">Atmosphärische Verarbeitungseinheit</Text>
+        <Text key="EncyDesc_LargeOxygenGenerator">Die atmosphärische Verarbeitungseinheit ist ein Hochleistungs-Sauerstoffgenerator, der für größere Basen oder solche mit höherem Sauerstoffbedarf konzipiert ist. Sie nutzt fortschrittliche Technologie, um Wasser effizient in atembare Luft umzuwandeln und eine stabile und ausreichende Sauerstoffversorgung für ausgedehnte Unterwasserhabitate zu gewährleisten. Die atmosphärische Verarbeitungseinheit ist entscheidend für die Aufrechterhaltung sicherer atmosphärischer Bedingungen, während Ihre Basis wächst und komplexer wird.</Text>
+        <Text key="Ency_LargeOxygenGeneratorFragment">Fragment einer atmosphärischen Verarbeitungseinheit</Text>
+        <Text key="EncyDesc_LargeOxygenGeneratorFragment">Ein Fragment einer atmosphärischen Verarbeitungseinheit. Scannen Sie, um mehr zu erfahren.</Text>
+
+        <!-- Buildables -->
+        <Text key="SmallOxygenGenerator">Luftsynthesizer</Text>
+        <Text key="Tooltip_SmallOxygenGenerator">Liefert eine kleine Menge Sauerstoff an Ihre Basis.</Text>
+        <Text key="LargeOxygenGenerator">Atmosphärische Verarbeitungseinheit</Text>
+        <Text key="Tooltip_LargeOxygenGenerator">Liefert eine große Menge Sauerstoff an Ihre Basis.</Text>
+        <Text key="LargeOxygenGeneratorFragment">Fragment einer atmosphärischen Verarbeitungseinheit</Text>
+        <Text key="Tooltip_LargeOxygenGeneratorFragment">Ein Fragment einer atmosphärischen Verarbeitungseinheit. Scannen Sie, um mehr zu erfahren.</Text>
+
+        <!-- UI -->
+        <Text key="NetOxygenProduction">Netto-Sauerstoffproduktion</Text>
+        <Text key="O2PerSecond">O₂/Sek</Text>
+        <Text key="O2StatusLabel">O₂-STATUS</Text>
+        <Text key="O2StatusOnline">ONLINE</Text>
+        <Text key="O2StatusOffline">OFFLINE</Text>
+        <Text key="O2StatusFlooded">ÜBERFLUTET</Text>
+
+        <!-- Options -->
+        <Text key="ProductionRateSmallOxygenGenerator">Produktionsrate des Luftsynthesizers</Text>
+        <Text key="Tooltip_ProductionRateSmallOxygenGenerator">Passen Sie die Sauerstoffproduktionsrate für Luftsynthesizer an.</Text>
+        <Text key="ProductionRateLargeOxygenGenerator">Produktionsrate der atmosphärischen Verarbeitungseinheit</Text>
+        <Text key="Tooltip_ProductionRateLargeOxygenGenerator">Passen Sie die Sauerstoffproduktionsrate für atmosphärische Verarbeitungseinheiten an.</Text>
+        <Text key="ShowSmartWarnings">Warnungen bei fehlenden Sauerstoffgeneratoren anzeigen</Text>
+        <Text key="Tooltip_ShowSmartWarnings">Wenn aktiviert, wird gelegentlich eine Benachrichtigung angezeigt, die Sie warnt, dass keine Sauerstoffgeneratoren in der Basis vorhanden sind und kein Schnorchel erkannt wurde (falls Schnorchel aktiviert ist).</Text>
+        <Text key="PartialOxygenLoss">Teilweiser Sauerstoffverlust</Text>
+        <Text key="Tooltip_PartialOxygenLoss">Wenn aktiviert, führt eine negative Netto-Sauerstoffproduktion der Basis dazu, dass der Spieler Sauerstoff proportional zur Negativität der Produktion verliert, anstatt immer den maximalen Betrag zu verlieren (3 Sekunden Sauerstoff alle 3 Sekunden).</Text>
+        <Text key="AllowBaseSnorkel">Basis-Schnorchel erlauben</Text>
+        <Text key="Tooltip_AllowBaseSnorkel">Wenn aktiviert, fungiert mindestens ein bewohnbares Basisteil über der Wasseroberfläche als unbegrenzte Sauerstoffquelle. Wenn dies deaktiviert bleibt, wird die Standard-Sauerstofferzeugung in Basen über Wasser verhindert.</Text>
+    </LocalizationPackage>
+
+    <LocalizationPackage Lang="Russian">
+        <!-- Encyclopedia Entries -->
+        <Text key="Ency_OxygenGeneration">Генерация кислорода</Text>
+        <Text key="EncyDesc_OxygenGeneration">Генерация кислорода необходима для поддержания жизни в подводных местообитаниях. Каждый отсек базы потребляет кислород, а более крупные или сложные базы требуют большей производительности кислорода для сохранения обитаемости. Специализированные генераторы кислорода преобразуют воду в пригодный для дыхания воздух, используя энергетические резервы базы. Для обеспечения безопасных атмосферных условий установите достаточное количество генераторов в соответствии с размером вашей базы и контролируйте уровни кислорода при расширении или модификации вашего жилища.</Text>
+        <Text key="Ency_SmallOxygenGenerator">Синтезатор воздуха</Text>
+        <Text key="EncyDesc_SmallOxygenGenerator">Синтезатор воздуха — это компактный генератор кислорода, предназначенный для небольших баз или в качестве дополнительного источника пригодного для дыхания воздуха. Он эффективно преобразует воду в кислород, обеспечивая стабильную подачу для поддержания безопасных атмосферных условий. Идеально подходит для раннего развития базы или в качестве аварийного резерва, синтезатор воздуха является важным компонентом любого подводного жилища.</Text>
+        <Text key="Ency_LargeOxygenGenerator">Атмосферный процессор</Text>
+        <Text key="EncyDesc_LargeOxygenGenerator">Атмосферный процессор — это высокопроизводительный генератор кислорода, предназначенный для крупных баз или тех, у которых повышенные потребности в кислороде. Он использует передовые технологии для эффективного преобразования воды в пригодный для дыхания воздух, обеспечивая стабильное и достаточное снабжение кислородом обширных подводных местообитаний. Атмосферный процессор имеет решающее значение для поддержания безопасных атмосферных условий по мере расширения и усложнения вашей базы.</Text>
+        <Text key="Ency_LargeOxygenGeneratorFragment">Фрагмент атмосферного процессора</Text>
+        <Text key="EncyDesc_LargeOxygenGeneratorFragment">Фрагмент атмосферного процессора. Отсканируйте, чтобы узнать больше.</Text>
+
+        <!-- Buildables -->
+        <Text key="SmallOxygenGenerator">Синтезатор воздуха</Text>
+        <Text key="Tooltip_SmallOxygenGenerator">Обеспечивает небольшое количество кислорода для вашей базы.</Text>
+        <Text key="LargeOxygenGenerator">Атмосферный процессор</Text>
+        <Text key="Tooltip_LargeOxygenGenerator">Обеспечивает большое количество кислорода для вашей базы.</Text>
+        <Text key="LargeOxygenGeneratorFragment">Фрагмент атмосферного процессора</Text>
+        <Text key="Tooltip_LargeOxygenGeneratorFragment">Фрагмент атмосферного процессора. Отсканируйте, чтобы узнать больше.</Text>
+
+        <!-- UI -->
+        <Text key="NetOxygenProduction">Чистая выработка кислорода</Text>
+        <Text key="O2PerSecond">O₂/сек</Text>
+        <Text key="O2StatusLabel">СТАТУС O₂</Text>
+        <Text key="O2StatusOnline">В СЕТИ</Text>
+        <Text key="O2StatusOffline">НЕ В СЕТИ</Text>
+        <Text key="O2StatusFlooded">ЗАТОПЛЕНО</Text>
+
+        <!-- Options -->
+        <Text key="ProductionRateSmallOxygenGenerator">Скорость производства синтезатора воздуха</Text>
+        <Text key="Tooltip_ProductionRateSmallOxygenGenerator">Настройте скорость производства кислорода для синтезаторов воздуха.</Text>
+        <Text key="ProductionRateLargeOxygenGenerator">Скорость производства атмосферного процессора</Text>
+        <Text key="Tooltip_ProductionRateLargeOxygenGenerator">Настройте скорость производства кислорода для атмосферных процессоров.</Text>
+        <Text key="ShowSmartWarnings">Показывать предупреждения об отсутствии генераторов кислорода</Text>
+        <Text key="Tooltip_ShowSmartWarnings">Если включено, будет периодически отображаться уведомление о том, что в базе нет генераторов кислорода и не обнаружен снорклинг (если снорклинг включен).</Text>
+        <Text key="PartialOxygenLoss">Частичная потеря кислорода</Text>
+        <Text key="Tooltip_PartialOxygenLoss">Если включено, отрицательная чистая выработка кислорода базы приведет к потере игроком кислорода пропорционально тому, насколько отрицательна выработка, вместо того чтобы всегда терять максимальное количество (3 секунды кислорода каждые 3 секунды).</Text>
+        <Text key="AllowBaseSnorkel">Разрешить снорклинг базы</Text>
+        <Text key="Tooltip_AllowBaseSnorkel">Если включено, наличие хотя бы одной обитаемой части базы над поверхностью воды будет действовать как бесконечный источник кислорода. Отключение этого параметра предотвратит генерацию кислорода по умолчанию в базах над водой.</Text>
+    </LocalizationPackage>
+
+    <LocalizationPackage Lang="Japanese">
+        <!-- Encyclopedia Entries -->
+        <Text key="Ency_OxygenGeneration">酸素生成</Text>
+        <Text key="EncyDesc_OxygenGeneration">酸素生成は、水中生息地で生命を維持するために不可欠です。各基地区画は酸素を消費し、より大きくまたは複雑な基地は、居住可能であり続けるためにより大きな酸素生産を必要とします。特殊な酸素発生装置は、基地のエネルギー貯蔵を動力源として、水を呼吸可能な空気に変換します。安全な大気条件を確保するために、基地の規模に合わせて十分な発生装置を設置し、生息地を拡張または変更する際に酸素レベルを監視してください。</Text>
+        <Text key="Ency_SmallOxygenGenerator">エアシンセサイザー</Text>
+        <Text key="EncyDesc_SmallOxygenGenerator">エアシンセサイザーは、小規模な基地または呼吸可能な空気の補助源として設計されたコンパクトな酸素発生装置です。水を効率的に酸素に変換し、安全な大気条件を維持するための安定した供給を提供します。初期の基地開発や緊急用バックアップとして理想的で、エアシンセサイザーはあらゆる水中生息地に不可欠なコンポーネントです。</Text>
+        <Text key="Ency_LargeOxygenGenerator">大気処理ユニット</Text>
+        <Text key="EncyDesc_LargeOxygenGenerator">大気処理ユニットは、大規模な基地またはより高い酸素需要を持つ基地向けに設計された大容量の酸素発生装置です。先進技術を利用して水を効率的に呼吸可能な空気に変換し、広大な水中生息地に安定した十分な酸素供給を確保します。大気処理ユニットは、基地が拡大しより複雑になるにつれて、安全な大気条件を維持するために不可欠です。</Text>
+        <Text key="Ency_LargeOxygenGeneratorFragment">大気処理ユニットの断片</Text>
+        <Text key="EncyDesc_LargeOxygenGeneratorFragment">大気処理ユニットの断片。スキャンして詳細を確認してください。</Text>
+
+        <!-- Buildables -->
+        <Text key="SmallOxygenGenerator">エアシンセサイザー</Text>
+        <Text key="Tooltip_SmallOxygenGenerator">基地に少量の酸素を供給します。</Text>
+        <Text key="LargeOxygenGenerator">大気処理ユニット</Text>
+        <Text key="Tooltip_LargeOxygenGenerator">基地に大量の酸素を供給します。</Text>
+        <Text key="LargeOxygenGeneratorFragment">大気処理ユニットの断片</Text>
+        <Text key="Tooltip_LargeOxygenGeneratorFragment">大気処理ユニットの断片。スキャンして詳細を確認してください。</Text>
+
+        <!-- UI -->
+        <Text key="NetOxygenProduction">正味酸素生産量</Text>
+        <Text key="O2PerSecond">O₂/秒</Text>
+        <Text key="O2StatusLabel">O₂ステータス</Text>
+        <Text key="O2StatusOnline">オンライン</Text>
+        <Text key="O2StatusOffline">オフライン</Text>
+        <Text key="O2StatusFlooded">浸水</Text>
+
+        <!-- Options -->
+        <Text key="ProductionRateSmallOxygenGenerator">エアシンセサイザーの生産速度</Text>
+        <Text key="Tooltip_ProductionRateSmallOxygenGenerator">エアシンセサイザーの酸素生産速度を調整します。</Text>
+        <Text key="ProductionRateLargeOxygenGenerator">大気処理ユニットの生産速度</Text>
+        <Text key="Tooltip_ProductionRateLargeOxygenGenerator">大気処理ユニットの酸素生産速度を調整します。</Text>
+        <Text key="ShowSmartWarnings">酸素発生装置なし警告を表示</Text>
+        <Text key="Tooltip_ShowSmartWarnings">有効にすると、基地に酸素発生装置がなく、スノーケルが検出されない（スノーケルが有効な場合）ことを警告する通知が時々表示されます。</Text>
+        <Text key="PartialOxygenLoss">部分的な酸素損失</Text>
+        <Text key="Tooltip_PartialOxygenLoss">有効にすると、正味の基地酸素生産がマイナスになると、プレイヤーは常に最大量（3秒ごとに3秒分の酸素）を失うのではなく、生産がどれだけマイナスかに比例して酸素を失います。</Text>
+        <Text key="AllowBaseSnorkel">基地スノーケルを許可</Text>
+        <Text key="Tooltip_AllowBaseSnorkel">有効にすると、水面上に少なくとも1つの居住可能な基地部分があると、無限の酸素供給として機能します。これを無効にすると、水上の基地でのデフォルトの酸素生成が防止されます。</Text>
+    </LocalizationPackage>
+
+    <LocalizationPackage Lang="ChineseSimplified">
+        <!-- Encyclopedia Entries -->
+        <Text key="Ency_OxygenGeneration">氧气生成</Text>
+        <Text key="EncyDesc_OxygenGeneration">氧气生成对于维持水下栖息地的生命至关重要。每个基地舱室都会消耗氧气，更大或更复杂的基地需要更多的氧气产量才能保持宜居性。专用氧气发生器将水转化为可呼吸的空气，由基地的能量储备提供动力。为确保安全的大气条件，请安装足够的发生器以匹配您的基地规模，并在扩展或修改栖息地时监控氧气水平。</Text>
+        <Text key="Ency_SmallOxygenGenerator">空气合成器</Text>
+        <Text key="EncyDesc_SmallOxygenGenerator">空气合成器是一种紧凑型氧气发生器，专为小型基地或作为可呼吸空气的补充来源而设计。它有效地将水转化为氧气，提供稳定的供应以维持安全的大气条件。非常适合早期基地开发或作为紧急备份，空气合成器是任何水下栖息地的重要组成部分。</Text>
+        <Text key="Ency_LargeOxygenGenerator">大气处理装置</Text>
+        <Text key="EncyDesc_LargeOxygenGenerator">大气处理装置是一种高容量氧气发生器，专为大型基地或具有更高氧气需求的基地而设计。它利用先进技术高效地将水转化为可呼吸的空气，确保为广泛的水下栖息地提供稳定且充足的氧气供应。大气处理装置对于在基地扩展和变得更加复杂时维持安全的大气条件至关重要。</Text>
+        <Text key="Ency_LargeOxygenGeneratorFragment">大气处理装置碎片</Text>
+        <Text key="EncyDesc_LargeOxygenGeneratorFragment">大气处理装置的碎片。扫描以了解更多信息。</Text>
+
+        <!-- Buildables -->
+        <Text key="SmallOxygenGenerator">空气合成器</Text>
+        <Text key="Tooltip_SmallOxygenGenerator">为您的基地提供少量氧气。</Text>
+        <Text key="LargeOxygenGenerator">大气处理装置</Text>
+        <Text key="Tooltip_LargeOxygenGenerator">为您的基地提供大量氧气。</Text>
+        <Text key="LargeOxygenGeneratorFragment">大气处理装置碎片</Text>
+        <Text key="Tooltip_LargeOxygenGeneratorFragment">大气处理装置的碎片。扫描以了解更多信息。</Text>
+
+        <!-- UI -->
+        <Text key="NetOxygenProduction">净氧气产量</Text>
+        <Text key="O2PerSecond">O₂/秒</Text>
+        <Text key="O2StatusLabel">O₂状态</Text>
+        <Text key="O2StatusOnline">在线</Text>
+        <Text key="O2StatusOffline">离线</Text>
+        <Text key="O2StatusFlooded">被淹</Text>
+
+        <!-- Options -->
+        <Text key="ProductionRateSmallOxygenGenerator">空气合成器生产速率</Text>
+        <Text key="Tooltip_ProductionRateSmallOxygenGenerator">调整空气合成器的氧气生产速率。</Text>
+        <Text key="ProductionRateLargeOxygenGenerator">大气处理装置生产速率</Text>
+        <Text key="Tooltip_ProductionRateLargeOxygenGenerator">调整大气处理装置的氧气生产速率。</Text>
+        <Text key="ShowSmartWarnings">显示无氧气发生器警告</Text>
+        <Text key="Tooltip_ShowSmartWarnings">如果启用，将偶尔显示通知，提醒您基地中没有氧气发生器，并且未检测到浮潜（如果启用浮潜）。</Text>
+        <Text key="PartialOxygenLoss">部分氧气损失</Text>
+        <Text key="Tooltip_PartialOxygenLoss">如果启用，净基地氧气产量为负值将导致玩家按产量负值的比例损失氧气，而不是总是损失最大量（每3秒损失3秒的氧气）。</Text>
+        <Text key="AllowBaseSnorkel">允许基地浮潜</Text>
+        <Text key="Tooltip_AllowBaseSnorkel">如果启用，至少有一个可居住的基地部分在水面上方将充当无限氧气供应。将此禁用将阻止水上基地的默认氧气生成。</Text>
+    </LocalizationPackage>
+
+    <LocalizationPackage Lang="Portuguese">
+        <!-- Encyclopedia Entries -->
+        <Text key="Ency_OxygenGeneration">Geração de oxigênio</Text>
+        <Text key="EncyDesc_OxygenGeneration">A geração de oxigênio é essencial para sustentar a vida em habitats subaquáticos. Cada compartimento da base consome oxigênio, e bases maiores ou mais complexas requerem maior produção de oxigênio para permanecerem habitáveis. Geradores de oxigênio especializados convertem água em ar respirável, alimentados pelas reservas de energia da base. Para garantir condições atmosféricas seguras, instale geradores suficientes para corresponder ao tamanho da sua base e monitore os níveis de oxigênio à medida que expande ou modifica seu habitat.</Text>
+        <Text key="Ency_SmallOxygenGenerator">Sintetizador de ar</Text>
+        <Text key="EncyDesc_SmallOxygenGenerator">O sintetizador de ar é um gerador de oxigênio compacto projetado para bases menores ou como fonte suplementar de ar respirável. Ele converte água em oxigênio com eficiência, fornecendo um suprimento constante para manter condições atmosféricas seguras. Ideal para o desenvolvimento inicial de bases ou como backup de emergência, o sintetizador de ar é um componente essencial para qualquer habitat subaquático.</Text>
+        <Text key="Ency_LargeOxygenGenerator">Unidade de processamento atmosférico</Text>
+        <Text key="EncyDesc_LargeOxygenGenerator">A unidade de processamento atmosférico é um gerador de oxigênio de alta capacidade projetado para bases maiores ou aquelas com maiores demandas de oxigênio. Ela utiliza tecnologia avançada para converter água em ar respirável com eficiência, garantindo um suprimento de oxigênio estável e suficiente para habitats subaquáticos extensos. A unidade de processamento atmosférico é crucial para manter condições atmosféricas seguras à medida que sua base se expande e se torna mais complexa.</Text>
+        <Text key="Ency_LargeOxygenGeneratorFragment">Fragmento de unidade de processamento atmosférico</Text>
+        <Text key="EncyDesc_LargeOxygenGeneratorFragment">Um fragmento de uma unidade de processamento atmosférico. Escaneie para saber mais.</Text>
+
+        <!-- Buildables -->
+        <Text key="SmallOxygenGenerator">Sintetizador de ar</Text>
+        <Text key="Tooltip_SmallOxygenGenerator">Fornece uma pequena quantidade de oxigênio para sua base.</Text>
+        <Text key="LargeOxygenGenerator">Unidade de processamento atmosférico</Text>
+        <Text key="Tooltip_LargeOxygenGenerator">Fornece uma grande quantidade de oxigênio para sua base.</Text>
+        <Text key="LargeOxygenGeneratorFragment">Fragmento de unidade de processamento atmosférico</Text>
+        <Text key="Tooltip_LargeOxygenGeneratorFragment">Um fragmento de uma unidade de processamento atmosférico. Escaneie para saber mais.</Text>
+
+        <!-- UI -->
+        <Text key="NetOxygenProduction">Produção líquida de oxigênio</Text>
+        <Text key="O2PerSecond">O₂/seg</Text>
+        <Text key="O2StatusLabel">STATUS O₂</Text>
+        <Text key="O2StatusOnline">ONLINE</Text>
+        <Text key="O2StatusOffline">OFFLINE</Text>
+        <Text key="O2StatusFlooded">INUNDADO</Text>
+
+        <!-- Options -->
+        <Text key="ProductionRateSmallOxygenGenerator">Taxa de produção do sintetizador de ar</Text>
+        <Text key="Tooltip_ProductionRateSmallOxygenGenerator">Ajuste a taxa de produção de oxigênio para sintetizadores de ar.</Text>
+        <Text key="ProductionRateLargeOxygenGenerator">Taxa de produção da unidade de processamento atmosférico</Text>
+        <Text key="Tooltip_ProductionRateLargeOxygenGenerator">Ajuste a taxa de produção de oxigênio para unidades de processamento atmosférico.</Text>
+        <Text key="ShowSmartWarnings">Mostrar avisos de ausência de gerador de oxigênio</Text>
+        <Text key="Tooltip_ShowSmartWarnings">Se ativado, uma notificação será exibida ocasionalmente alertando que não há geradores de oxigênio na base e nenhum snorkel foi detectado (se o snorkel estiver ativado).</Text>
+        <Text key="PartialOxygenLoss">Perda parcial de oxigênio</Text>
+        <Text key="Tooltip_PartialOxygenLoss">Se ativado, ter uma produção líquida de oxigênio negativa na base fará com que o jogador perca oxigênio proporcionalmente ao quão negativa é a produção, em vez de sempre perder a quantidade máxima (3 segundos de oxigênio a cada 3 segundos).</Text>
+        <Text key="AllowBaseSnorkel">Permitir snorkel de base</Text>
+        <Text key="Tooltip_AllowBaseSnorkel">Se ativado, ter pelo menos uma peça da base habitável acima da superfície da água atuará como um suprimento infinito de oxigênio. Deixar isso desativado impedirá a geração de oxigênio padrão em bases acima da água.</Text>
+    </LocalizationPackage>
+
+    <LocalizationPackage Lang="Korean">
+        <!-- Encyclopedia Entries -->
+        <Text key="Ency_OxygenGeneration">산소 생성</Text>
+        <Text key="EncyDesc_OxygenGeneration">산소 생성은 수중 서식지에서 생명을 유지하는 데 필수적입니다. 각 기지 구획은 산소를 소비하며, 더 크거나 복잡한 기지는 거주 가능한 상태를 유지하기 위해 더 많은 산소 생산이 필요합니다. 전문 산소 발생기는 기지의 에너지 비축량을 동력으로 물을 호흡 가능한 공기로 변환합니다. 안전한 대기 조건을 보장하려면 기지 크기에 맞는 충분한 발생기를 설치하고 서식지를 확장하거나 수정할 때 산소 수준을 모니터링하십시오.</Text>
+        <Text key="Ency_SmallOxygenGenerator">공기 합성기</Text>
+        <Text key="EncyDesc_SmallOxygenGenerator">공기 합성기는 소형 기지용으로 설계되었거나 호흡 가능한 공기의 보조 공급원으로 설계된 소형 산소 발생기입니다. 물을 효율적으로 산소로 변환하여 안전한 대기 조건을 유지하기 위한 안정적인 공급을 제공합니다. 초기 기지 개발이나 비상 백업으로 이상적이며, 공기 합성기는 모든 수중 서식지에 필수적인 구성 요소입니다.</Text>
+        <Text key="Ency_LargeOxygenGenerator">대기 처리 장치</Text>
+        <Text key="EncyDesc_LargeOxygenGenerator">대기 처리 장치는 대형 기지나 산소 수요가 높은 기지용으로 설계된 대용량 산소 발생기입니다. 첨단 기술을 활용하여 물을 효율적으로 호흡 가능한 공기로 변환하여 광범위한 수중 서식지에 안정적이고 충분한 산소 공급을 보장합니다. 대기 처리 장치는 기지가 확장되고 복잡해짐에 따라 안전한 대기 조건을 유지하는 데 중요합니다.</Text>
+        <Text key="Ency_LargeOxygenGeneratorFragment">대기 처리 장치 조각</Text>
+        <Text key="EncyDesc_LargeOxygenGeneratorFragment">대기 처리 장치의 조각. 스캔하여 자세히 알아보세요.</Text>
+
+        <!-- Buildables -->
+        <Text key="SmallOxygenGenerator">공기 합성기</Text>
+        <Text key="Tooltip_SmallOxygenGenerator">기지에 소량의 산소를 공급합니다.</Text>
+        <Text key="LargeOxygenGenerator">대기 처리 장치</Text>
+        <Text key="Tooltip_LargeOxygenGenerator">기지에 많은 양의 산소를 공급합니다.</Text>
+        <Text key="LargeOxygenGeneratorFragment">대기 처리 장치 조각</Text>
+        <Text key="Tooltip_LargeOxygenGeneratorFragment">대기 처리 장치의 조각. 스캔하여 자세히 알아보세요.</Text>
+
+        <!-- UI -->
+        <Text key="NetOxygenProduction">순 산소 생산량</Text>
+        <Text key="O2PerSecond">O₂/초</Text>
+        <Text key="O2StatusLabel">O₂ 상태</Text>
+        <Text key="O2StatusOnline">온라인</Text>
+        <Text key="O2StatusOffline">오프라인</Text>
+        <Text key="O2StatusFlooded">침수됨</Text>
+
+        <!-- Options -->
+        <Text key="ProductionRateSmallOxygenGenerator">공기 합성기 생산 속도</Text>
+        <Text key="Tooltip_ProductionRateSmallOxygenGenerator">공기 합성기의 산소 생산 속도를 조정합니다.</Text>
+        <Text key="ProductionRateLargeOxygenGenerator">대기 처리 장치 생산 속도</Text>
+        <Text key="Tooltip_ProductionRateLargeOxygenGenerator">대기 처리 장치의 산소 생산 속도를 조정합니다.</Text>
+        <Text key="ShowSmartWarnings">산소 발생기 없음 경고 표시</Text>
+        <Text key="Tooltip_ShowSmartWarnings">활성화하면 기지에 산소 발생기가 없고 스노클이 감지되지 않았음을 알리는 알림이 때때로 표시됩니다(스노클이 활성화된 경우).</Text>
+        <Text key="PartialOxygenLoss">부분 산소 손실</Text>
+        <Text key="Tooltip_PartialOxygenLoss">활성화하면 순 기지 산소 생산이 음수일 때 플레이어는 항상 최대량(3초마다 3초의 산소)을 잃는 대신 생산이 얼마나 음수인지에 비례하여 산소를 잃습니다.</Text>
+        <Text key="AllowBaseSnorkel">기지 스노클 허용</Text>
+        <Text key="Tooltip_AllowBaseSnorkel">활성화하면 수면 위에 최소한 하나의 거주 가능한 기지 부분이 있으면 무한 산소 공급원 역할을 합니다. 이를 비활성화하면 수상 기지에서 기본 산소 생성이 방지됩니다.</Text>
+    </LocalizationPackage>
+
+    <LocalizationPackage Lang="Polish">
+        <!-- Encyclopedia Entries -->
+        <Text key="Ency_OxygenGeneration">Generowanie tlenu</Text>
+        <Text key="EncyDesc_OxygenGeneration">Generowanie tlenu jest niezbędne do podtrzymania życia w siedliskach podwodnych. Każdy przedział bazy zużywa tlen, a większe lub bardziej złożone bazy wymagają większej produkcji tlenu, aby pozostać nadającymi się do zamieszkania. Specjalistyczne generatory tlenu przekształcają wodę w nadające się do oddychania powietrze, zasilane rezerwami energii bazy. Aby zapewnić bezpieczne warunki atmosferyczne, zainstaluj wystarczającą ilość generatorów odpowiadającą rozmiarowi bazy i monitoruj poziomy tlenu podczas rozbudowy lub modyfikacji siedliska.</Text>
+        <Text key="Ency_SmallOxygenGenerator">Syntetyzator powietrza</Text>
+        <Text key="EncyDesc_SmallOxygenGenerator">Syntetyzator powietrza to kompaktowy generator tlenu zaprojektowany dla mniejszych baz lub jako dodatkowe źródło nadającego się do oddychania powietrza. Skutecznie przekształca wodę w tlen, zapewniając stały dopływ w celu utrzymania bezpiecznych warunków atmosferycznych. Idealny do początkowego rozwoju bazy lub jako rezerwowe źródło awaryjne, syntetyzator powietrza jest niezbędnym komponentem każdego siedliska podwodnego.</Text>
+        <Text key="Ency_LargeOxygenGenerator">Jednostka przetwarzania atmosferycznego</Text>
+        <Text key="EncyDesc_LargeOxygenGenerator">Jednostka przetwarzania atmosferycznego to generator tlenu o dużej wydajności zaprojektowany dla większych baz lub tych o większym zapotrzebowaniu na tlen. Wykorzystuje zaawansowaną technologię do skutecznego przekształcania wody w nadające się do oddychania powietrze, zapewniając stabilny i wystarczający dopływ tlenu dla rozległych siedlisk podwodnych. Jednostka przetwarzania atmosferycznego jest kluczowa dla utrzymania bezpiecznych warunków atmosferycznych w miarę rozbudowy i komplikowania się bazy.</Text>
+        <Text key="Ency_LargeOxygenGeneratorFragment">Fragment jednostki przetwarzania atmosferycznego</Text>
+        <Text key="EncyDesc_LargeOxygenGeneratorFragment">Fragment jednostki przetwarzania atmosferycznego. Zeskanuj, aby dowiedzieć się więcej.</Text>
+
+        <!-- Buildables -->
+        <Text key="SmallOxygenGenerator">Syntetyzator powietrza</Text>
+        <Text key="Tooltip_SmallOxygenGenerator">Dostarcza niewielką ilość tlenu do bazy.</Text>
+        <Text key="LargeOxygenGenerator">Jednostka przetwarzania atmosferycznego</Text>
+        <Text key="Tooltip_LargeOxygenGenerator">Dostarcza dużą ilość tlenu do bazy.</Text>
+        <Text key="LargeOxygenGeneratorFragment">Fragment jednostki przetwarzania atmosferycznego</Text>
+        <Text key="Tooltip_LargeOxygenGeneratorFragment">Fragment jednostki przetwarzania atmosferycznego. Zeskanuj, aby dowiedzieć się więcej.</Text>
+
+        <!-- UI -->
+        <Text key="NetOxygenProduction">Produkcja netto tlenu</Text>
+        <Text key="O2PerSecond">O₂/sek</Text>
+        <Text key="O2StatusLabel">STATUS O₂</Text>
+        <Text key="O2StatusOnline">ONLINE</Text>
+        <Text key="O2StatusOffline">OFFLINE</Text>
+        <Text key="O2StatusFlooded">ZALANE</Text>
+
+        <!-- Options -->
+        <Text key="ProductionRateSmallOxygenGenerator">Tempo produkcji syntetyzatora powietrza</Text>
+        <Text key="Tooltip_ProductionRateSmallOxygenGenerator">Dostosuj tempo produkcji tlenu dla syntetyzatorów powietrza.</Text>
+        <Text key="ProductionRateLargeOxygenGenerator">Tempo produkcji jednostki przetwarzania atmosferycznego</Text>
+        <Text key="Tooltip_ProductionRateLargeOxygenGenerator">Dostosuj tempo produkcji tlenu dla jednostek przetwarzania atmosferycznego.</Text>
+        <Text key="ShowSmartWarnings">Pokaż ostrzeżenia o braku generatora tlenu</Text>
+        <Text key="Tooltip_ShowSmartWarnings">Jeśli włączone, będzie pojawiać się powiadomienie ostrzegające, że w bazie nie ma generatorów tlenu i nie wykryto snorkelingu (jeśli snorkeling jest włączony).</Text>
+        <Text key="PartialOxygenLoss">Częściowa utrata tlenu</Text>
+        <Text key="Tooltip_PartialOxygenLoss">Jeśli włączone, ujemna produkcja netto tlenu w bazie spowoduje, że gracz będzie tracić tlen proporcjonalnie do tego, jak ujemna jest produkcja, zamiast zawsze tracić maksymalną ilość (3 sekundy tlenu co 3 sekundy).</Text>
+        <Text key="AllowBaseSnorkel">Zezwól na snorkeling bazy</Text>
+        <Text key="Tooltip_AllowBaseSnorkel">Jeśli włączone, posiadanie przynajmniej jednej mieszkalnej części bazy nad powierzchnią wody będzie działać jako nieskończone źródło tlenu. Wyłączenie tej opcji zapobiegnie domyślnej generacji tlenu w bazach nad wodą.</Text>
+    </LocalizationPackage>
+
+    <LocalizationPackage Lang="Italian">
+        <!-- Encyclopedia Entries -->
+        <Text key="Ency_OxygenGeneration">Generazione di ossigeno</Text>
+        <Text key="EncyDesc_OxygenGeneration">La generazione di ossigeno è essenziale per sostenere la vita negli habitat sottomarini. Ogni compartimento della base consume ossigeno e le basi più grandi o complesse richiedono una maggiore produzione di ossigeno per rimanere abitabili. Generatori di ossigeno specializzati convertono l'acqua in aria respirabile, alimentati dalle riserve energetiche della base. Per garantire condizioni atmosferiche sicure, installare generatori sufficienti per adattarsi alle dimensioni della base e monitorare i livelli di ossigeno durante l'espansione o la modifica dell'habitat.</Text>
+        <Text key="Ency_SmallOxygenGenerator">Sintetizzatore d'aria</Text>
+        <Text key="EncyDesc_SmallOxygenGenerator">Il sintetizzatore d'aria è un generatore di ossigeno compatto progettato per basi più piccole o come fonte supplementare di aria respirabile. Converte efficientemente l'acqua in ossigeno, fornendo una fornitura costante per mantenere condizioni atmosferiche sicure. Ideale per lo sviluppo iniziale della base o come backup di emergenza, il sintetizzatore d'aria è un componente essenziale per qualsiasi habitat sottomarino.</Text>
+        <Text key="Ency_LargeOxygenGenerator">Unità di elaborazione atmosferica</Text>
+        <Text key="EncyDesc_LargeOxygenGenerator">L'unità di elaborazione atmosferica è un generatore di ossigeno ad alta capacità progettato per basi più grandi o con maggiori esigenze di ossigeno. Utilizza tecnologia avanzata per convertire efficientemente l'acqua in aria respirabile, garantendo una fornitura di ossigeno stabile e sufficiente per vasti habitat sottomarini. L'unità di elaborazione atmosferica è fondamentale per mantenere condizioni atmosferiche sicure mentre la base si espande e diventa più complessa.</Text>
+        <Text key="Ency_LargeOxygenGeneratorFragment">Frammento di unità di elaborazione atmosferica</Text>
+        <Text key="EncyDesc_LargeOxygenGeneratorFragment">Un frammento di un'unità di elaborazione atmosferica. Scansiona per saperne di più.</Text>
+
+        <!-- Buildables -->
+        <Text key="SmallOxygenGenerator">Sintetizzatore d'aria</Text>
+        <Text key="Tooltip_SmallOxygenGenerator">Fornisce una piccola quantità di ossigeno alla base.</Text>
+        <Text key="LargeOxygenGenerator">Unità di elaborazione atmosferica</Text>
+        <Text key="Tooltip_LargeOxygenGenerator">Fornisce una grande quantità di ossigeno alla base.</Text>
+        <Text key="LargeOxygenGeneratorFragment">Frammento di unità di elaborazione atmosferica</Text>
+        <Text key="Tooltip_LargeOxygenGeneratorFragment">Un frammento di un'unità di elaborazione atmosferica. Scansiona per saperne di più.</Text>
+
+        <!-- UI -->
+        <Text key="NetOxygenProduction">Produzione netta di ossigeno</Text>
+        <Text key="O2PerSecond">O₂/sec</Text>
+        <Text key="O2StatusLabel">STATO O₂</Text>
+        <Text key="O2StatusOnline">ONLINE</Text>
+        <Text key="O2StatusOffline">OFFLINE</Text>
+        <Text key="O2StatusFlooded">ALLAGATO</Text>
+
+        <!-- Options -->
+        <Text key="ProductionRateSmallOxygenGenerator">Velocità di produzione del sintetizzatore d'aria</Text>
+        <Text key="Tooltip_ProductionRateSmallOxygenGenerator">Regola la velocità di produzione di ossigeno per i sintetizzatori d'aria.</Text>
+        <Text key="ProductionRateLargeOxygenGenerator">Velocità di produzione dell'unità di elaborazione atmosferica</Text>
+        <Text key="Tooltip_ProductionRateLargeOxygenGenerator">Regola la velocità di produzione di ossigeno per le unità di elaborazione atmosferica.</Text>
+        <Text key="ShowSmartWarnings">Mostra avvisi di assenza generatore di ossigeno</Text>
+        <Text key="Tooltip_ShowSmartWarnings">Se abilitato, verrà visualizzata occasionalmente una notifica che avvisa che non ci sono generatori di ossigeno nella base e non è stato rilevato alcuno snorkeling (se lo snorkeling è abilitato).</Text>
+        <Text key="PartialOxygenLoss">Perdita parziale di ossigeno</Text>
+        <Text key="Tooltip_PartialOxygenLoss">Se abilitato, avere una produzione netta di ossigeno negativa nella base farà perdere al giocatore ossigeno proporzionalmente a quanto è negativa la produzione, invece di perdere sempre la quantità massima (3 secondi di ossigeno ogni 3 secondi).</Text>
+        <Text key="AllowBaseSnorkel">Consenti snorkeling della base</Text>
+        <Text key="Tooltip_AllowBaseSnorkel">Se abilitato, avere almeno un pezzo di base abitabile sopra la superficie dell'acqua fungerà da fonte infinita di ossigeno. Lasciare questa opzione disabilitata impedirà la generazione predefinita di ossigeno nelle basi sopra l'acqua.</Text>
+    </LocalizationPackage>
+
+    <LocalizationPackage Lang="Turkish">
+        <!-- Encyclopedia Entries -->
+        <Text key="Ency_OxygenGeneration">Oksijen üretimi</Text>
+        <Text key="EncyDesc_OxygenGeneration">Oksijen üretimi, su altı yaşam alanlarında yaşamı sürdürmek için gereklidir. Her üs bölmesi oksijen tüketir ve daha büyük veya daha karmaşık üsler yaşanabilir kalabilmek için daha fazla oksijen üretimine ihtiyaç duyar. Özel oksijen jeneratörleri, üssün enerji rezervleri tarafından beslenen suyu nefes alınabilir havaya dönüştürür. Güvenli atmosferik koşulları sağlamak için üssünüzün boyutuna uygun yeterli jeneratör kurun ve yaşam alanınızı genişletirken veya değiştirirken oksijen seviyelerini izleyin.</Text>
+        <Text key="Ency_SmallOxygenGenerator">Hava sentezleyici</Text>
+        <Text key="EncyDesc_SmallOxygenGenerator">Hava sentezleyici, daha küçük üsler için veya nefes alınabilir havanın ek kaynağı olarak tasarlanmış kompakt bir oksijen jeneratörüdür. Suyu verimli bir şekilde oksijene dönüştürerek güvenli atmosferik koşulları sürdürmek için sabit bir tedarik sağlar. Erken üs geliştirme veya acil durum yedeği olarak ideal olan hava sentezleyici, herhangi bir su altı yaşam alanı için temel bir bileşendir.</Text>
+        <Text key="Ency_LargeOxygenGenerator">Atmosferik işleme ünitesi</Text>
+        <Text key="EncyDesc_LargeOxygenGenerator">Atmosferik işleme ünitesi, daha büyük üsler veya daha yüksek oksijen talepleri olan üsler için tasarlanmış yüksek kapasiteli bir oksijen jeneratörüdür. Suyu verimli bir şekilde nefes alınabilir havaya dönüştürmek için ileri teknolojiyi kullanarak geniş su altı yaşam alanları için istikrarlı ve yeterli oksijen tedariki sağlar. Atmosferik işleme ünitesi, üssünüz genişledikçe ve daha karmaşık hale geldikçe güvenli atmosferik koşulları korumak için çok önemlidir.</Text>
+        <Text key="Ency_LargeOxygenGeneratorFragment">Atmosferik işleme ünitesi parçası</Text>
+        <Text key="EncyDesc_LargeOxygenGeneratorFragment">Bir atmosferik işleme ünitesinin parçası. Daha fazla bilgi edinmek için tarayın.</Text>
+
+        <!-- Buildables -->
+        <Text key="SmallOxygenGenerator">Hava sentezleyici</Text>
+        <Text key="Tooltip_SmallOxygenGenerator">Üssünüze küçük miktarda oksijen sağlar.</Text>
+        <Text key="LargeOxygenGenerator">Atmosferik işleme ünitesi</Text>
+        <Text key="Tooltip_LargeOxygenGenerator">Üssünüze büyük miktarda oksijen sağlar.</Text>
+        <Text key="LargeOxygenGeneratorFragment">Atmosferik işleme ünitesi parçası</Text>
+        <Text key="Tooltip_LargeOxygenGeneratorFragment">Bir atmosferik işleme ünitesinin parçası. Daha fazla bilgi edinmek için tarayın.</Text>
+
+        <!-- UI -->
+        <Text key="NetOxygenProduction">Net oksijen üretimi</Text>
+        <Text key="O2PerSecond">O₂/sn</Text>
+        <Text key="O2StatusLabel">O₂ DURUMU</Text>
+        <Text key="O2StatusOnline">ÇEVRİMİÇİ</Text>
+        <Text key="O2StatusOffline">ÇEVRİMDIŞI</Text>
+        <Text key="O2StatusFlooded">SU BASTI</Text>
+
+        <!-- Options -->
+        <Text key="ProductionRateSmallOxygenGenerator">Hava sentezleyici üretim hızı</Text>
+        <Text key="Tooltip_ProductionRateSmallOxygenGenerator">Hava sentezleyiciler için oksijen üretim hızını ayarlayın.</Text>
+        <Text key="ProductionRateLargeOxygenGenerator">Atmosferik işleme ünitesi üretim hızı</Text>
+        <Text key="Tooltip_ProductionRateLargeOxygenGenerator">Atmosferik işleme üniteleri için oksijen üretim hızını ayarlayın.</Text>
+        <Text key="ShowSmartWarnings">Oksijen jeneratörü yok uyarılarını göster</Text>
+        <Text key="Tooltip_ShowSmartWarnings">Etkinleştirilirse, üste oksijen jeneratörü olmadığını ve şnorkel algılanmadığını (şnorkel etkinse) bildiren bir bildirim ara sıra gösterilecektir.</Text>
+        <Text key="PartialOxygenLoss">Kısmi oksijen kaybı</Text>
+        <Text key="Tooltip_PartialOxygenLoss">Etkinleştirilirse, üssün net oksijen üretiminin negatif olması, oyuncunun her zaman maksimum miktarı (her 3 saniyede 3 saniyelik oksijen) kaybetmesi yerine, üretimin ne kadar negatif olduğuyla orantılı olarak oksijen kaybetmesine neden olacaktır.</Text>
+        <Text key="AllowBaseSnorkel">Üs şnorkellemesine izin ver</Text>
+        <Text key="Tooltip_AllowBaseSnorkel">Etkinleştirilirse, su yüzeyinin üstünde en az bir yaşanabilir üs parçasına sahip olmak sonsuz oksijen kaynağı olarak hareket edecektir. Bu seçeneği devre dışı bırakmak, su üstü üslerde varsayılan oksijen üretimini engelleyecektir.</Text>
     </LocalizationPackage>
 </LocalizationPackages>

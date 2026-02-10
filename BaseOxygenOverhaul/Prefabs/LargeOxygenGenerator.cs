@@ -1,11 +1,8 @@
 using System.Reflection;
 using Nautilus.Assets;
 using Nautilus.Assets.Gadgets;
-using Nautilus.Assets.PrefabTemplates;
-using BaseOxygenOverhaul.Utilities;
 using System.Collections;
 using UnityEngine;
-using Nautilus.Handlers;
 using System.Collections.Generic;
 using Nautilus.Crafting;
 using Nautilus.Utility;
@@ -38,13 +35,6 @@ namespace BaseOxygenOverhaul.Prefabs
                     TechGroup.InteriorPieces,
                     TechCategory.InteriorPiece,
                     TechType.Bioreactor
-                )
-                .WithScannerEntry(
-                    blueprint: Info.TechType,
-                    scanTime: 5f,
-                    isFragment: false,
-                    encyKey: Global.GetEncyclopediaKey(Global.EncyclopediaKeys.LargeOxygenGenerator),
-                    destroyAfterScan: false
                 );
 
             prefab.SetRecipe(new RecipeData()
@@ -60,13 +50,6 @@ namespace BaseOxygenOverhaul.Prefabs
             });
 
             prefab.Register();
-
-            KnownTechHandler.SetAnalysisTechEntry(
-                techTypeToBeAnalysed: Info.TechType,
-                techTypesToUnlock: new List<TechType>(),
-                unlockMessage: KnownTechHandler.DefaultUnlockData.BlueprintUnlockMessage,
-                unlockSprite: Plugin.AssetBundle.LoadAsset<Sprite>("LargeOxygenGeneratorPopup")
-            );
         }
 
         private static IEnumerator CreatePrefab(IOut<GameObject> result)
@@ -87,15 +70,18 @@ namespace BaseOxygenOverhaul.Prefabs
             constructable.rotationEnabled = false;
             var constructableBounds = prefab.AddComponent<ConstructableBounds>();
             model.TryGetComponent<Collider>(out var collider);
-            if (collider == null) Plugin.Log.LogWarning($"Large Oxygen Generator prefab is missing a collider! This may cause issues with construction.");
+            if (collider == null) Plugin.Log.LogWarning($"LargeOxygenGenerator prefab is missing a collider! This may cause issues with construction.");
             constructableBounds.bounds = collider != null
                 ? new OrientedBounds(collider.bounds.center, Quaternion.identity, collider.bounds.size)
                 : new OrientedBounds(Vector3.zero, Quaternion.identity, Vector3.one);
 
+            // Add O2 display
+            // prefab.AddComponent<OxygenGeneratorO2Display>();
+
             // Add behaviours
             var manager = prefab.EnsureComponent<OxygenGeneratorManager>();
-            manager.type = OxygenGeneratorSize.Large;
-            prefab.EnsureComponent<OxygenGeneratorAudioVisualLarge>();
+            manager.Size = OxygenGeneratorSize.Large;
+            // prefab.EnsureComponent<OxygenGeneratorAudioVisual>();
             prefab.EnsureComponent<OxygenHandTarget>();
 
             result.Set(prefab);

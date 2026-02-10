@@ -48,8 +48,9 @@ namespace BaseOxygenOverhaul
 
             Log?.LogInfo("Patching items");
             SmallOxygenGenerator.Register();
-            LargeOxygenGenerator.Register();
-            LargeOxygenGeneratorFragment.Register();
+            // Disabling the large oxygen generator until it is finished
+            // LargeOxygenGenerator.Register();
+            // LargeOxygenGeneratorFragment.Register();
         }
     }
 }

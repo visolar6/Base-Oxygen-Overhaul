@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3626825922
+CRC: 1169135852
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0fbc6b65e216686271e47797dc7c5458
+    Hash: 89752c1b3d96d7d0f44ffa1adadff9af
   TypeTreeHash:
     serializedVersion: 2
-    Hash: b3e0ee69fd9ab42d4df73eaf89ff7963
+    Hash: 447a672b00fe871404a2b3c147e89f94
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -31,8 +31,23 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 65
   Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/BaseOxygenOverhaul/LargeOxygenGenerator/LargeOxygenGenerator.prefab
 - Assets/BaseOxygenOverhaul/SmallOxygenGenerator/SmallOxygenGenerator.prefab
+- Assets/BaseOxygenOverhaul/SmallOxygenGenerator/SmallOxygenGeneratorIcon.png
+- Assets/BaseOxygenOverhaul/LargeOxygenGenerator/LargeOxygenGenerator.prefab
 Dependencies: []
