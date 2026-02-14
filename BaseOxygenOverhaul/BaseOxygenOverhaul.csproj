@@ -31,7 +31,6 @@
 
   <!-- Build Targets -->
   <Target Name="CopyToTargetDir" AfterTargets="Build">
-    <Copy SourceFiles="$(TargetPath);../LICENSE" DestinationFolder="$(OutputPath)" />
     <MakeDir Directories="$(OutputPath)plugins" />
   </Target>
 </Project>
