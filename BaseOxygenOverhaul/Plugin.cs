@@ -23,7 +23,7 @@ namespace BaseOxygenOverhaul
 
         internal const string Name = "Base Oxygen Overhaul";
 
-        internal const string Version = "1.0.0";
+        internal const string Version = "1.0.1";
 
         private readonly Harmony _harmony = new Harmony(GUID);
 

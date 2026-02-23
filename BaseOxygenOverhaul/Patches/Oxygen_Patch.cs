@@ -13,6 +13,11 @@ namespace BaseOxygenOverhaul.Patches
         [HarmonyPatch(nameof(Oxygen.AddOxygen))]
         private static bool AddOxygen_Prefix(Oxygen __instance, float amount, ref float __result)
         {
+            if (!GameModeUtils.RequiresOxygen())
+            {
+                return true; // Allow normal oxygen addition in creative/cheats mode
+            }
+
             if (!BaseOxygenHandler.OnPlayerOxygenAdd(ref __instance))
             {
                 __result = 0f;

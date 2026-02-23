@@ -242,11 +242,16 @@ namespace BaseOxygenOverhaul.Utilities
             var baseOxygenProductionRate = GetProductionRate(_base);
             var baseOxygenDepletionRate = GetDepletionRate(_base);
             var baseOxygenNetRate = baseOxygenProductionRate - baseOxygenDepletionRate;
-            if (smartWarningsTimer > SmartWarningsInterval && baseOxygenNetRate < 0f)
+
+            if (Plugin.Options.ShowSmartWarnings && smartWarningsTimer > SmartWarningsInterval)
             {
-                ErrorMessage.AddMessage(Language.main.Get("NegativeNetOxygenProductionWarning"));
+                if (baseOxygenProductionRate == 0f)
+                    ErrorMessage.AddMessage(Language.main.Get("NoOxygenGeneratorWarning"));
+                else if (baseOxygenNetRate < 0f)
+                    ErrorMessage.AddMessage(Language.main.Get("NegativeNetOxygenProductionWarning"));
                 smartWarningsTimer = 0f;
             }
+
             return baseOxygenNetRate;
         }
 
@@ -256,14 +261,6 @@ namespace BaseOxygenOverhaul.Utilities
         public static float GetProductionRate(Base _base)
         {
             var oxygenGeneratorManagers = _base.gameObject.GetComponentsInChildren<OxygenGeneratorManager>();
-
-            // If there are no oxygen generators, log a warning every 60 seconds to encourage the player to build oxygen generators, unless the option for allowing the base to act as an infinite oxygen source if it has at least one habitable cell above water is enabled and the base currently has at least one habitable cell above water, in which case we can allow the player to survive without oxygen generators and avoid spamming them with warnings about it
-            if (smartWarningsTimer > SmartWarningsInterval && oxygenGeneratorManagers.Length == 0 && !(Plugin.Options.AllowBaseSnorkel && cachedHasHabitableCellAboveWater))
-            {
-                ErrorMessage.AddMessage(Language.main.Get("NoOxygenGeneratorWarning"));
-                smartWarningsTimer = 0f;
-                return 0f;
-            }
 
             var rate = 0f;
             for (var i = 0; i < oxygenGeneratorManagers.Length; i++)
